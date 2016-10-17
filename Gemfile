@@ -12,6 +12,9 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "font-awesome-sass"
+source "https://rails-assets.org/" do
+  gem "rails-assets-adminlte"
+end
 
 group :development, :test do
   gem "byebug", platform: :mri
