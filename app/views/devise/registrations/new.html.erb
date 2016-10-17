@@ -1,6 +1,5 @@
 <%= form_for resource, as: resource_name,
-  url: registration_path(resource_name), html: {class: "form-register" } do |f| %>
-  <%= devise_error_messages! %>
+  url: registration_path(@user), html: {class: "form-register" } do |f| %>
 
   <div class="form-register-with-email">
       <div class="form-white-background">
@@ -14,6 +13,7 @@
                   <span>Email</span>
                   <%= f.email_field :email, autofocus: true %>
               </label>
+              <p><%= @user.errors[:email][0].capitalize if @user.errors[:email][0] %></p>
           </div>
 
           <div class="form-row">
@@ -21,6 +21,7 @@
                   <span>Password</span>
                   <%= f.password_field :password, autocomplete: "off" %>
               </label>
+              <p><%= @user.errors[:password][0].capitalize if @user.errors[:password][0] %></p>
           </div>
 
           <div class="form-row">
