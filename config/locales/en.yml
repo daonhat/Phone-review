@@ -25,3 +25,20 @@ en:
   signup: "Sign up"
   home: "HOME"
   title_base: "Base title"
+  time_type: "%d/%m/%Y"
+  delete: "Delete"
+  sure: "Are you sure"
+  all_users: "All User"
+  destroy_success: "Delete successfully"
+  user:
+    name: "Name"
+    email: "Email"
+    avatar: "Avatar"
+    phone: "Phone number"
+    address: "Address"
+    created_at: "Created at"
+    updated_at: "Updated at"
+  admin:
+    drs: PRS
+    drsystem: PRSystem
+
