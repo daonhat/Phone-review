@@ -1,0 +1,14 @@
+<% provide :title, t("category.all_categories") %>
+<h1 class="text-center"><%= t "category.all_categories" %></h1>
+<div class="panel-body">
+  <button class="btn btn-primary" id ="dn-category-new"><%= t "category.new" %></button>
+  <%= form_for [:admin, @category], html: {class: "create_category hidden"} do |f| %>
+    <%= f.label t("category.name") %>
+    <%= f.text_field :name, class: "form-control", id: "dn-category-add" %>
+    <%= f.submit t(:create), class: "btn btn-primary" %>
+  <% end %>
+  <div class="dn-all-table-category" id="dn-all-table-category">
+    <%= render "all_categories" %>
+  </div>
+  <%= paginate @categories %>
+</div>
