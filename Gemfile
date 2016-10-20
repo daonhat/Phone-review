@@ -15,6 +15,8 @@ gem "kaminari"
 gem "bootstrap-kaminari-views"
 gem "devise"
 gem "font-awesome-sass"
+gem "ckeditor"
+gem "paperclip"
 source "https://rails-assets.org/" do
   gem "rails-assets-adminlte"
 end

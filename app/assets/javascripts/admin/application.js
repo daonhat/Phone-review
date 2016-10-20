@@ -16,3 +16,11 @@
 //= require turbolinks
 //= require adminlte
 //= require_tree .
+
+$(document).on('ready', function() {
+  set_timetout();
+});
+
+function set_timetout() {
+  $('.alert').delay(3000).slideUp();
+}

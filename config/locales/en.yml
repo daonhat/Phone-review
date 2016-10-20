@@ -41,4 +41,7 @@ en:
   admin:
     drs: PRS
     drsystem: PRSystem
+  new_phone: "New Phone"
+  admin_view: "Admin PRS"
+  phone_created: "Phone created!"
 
