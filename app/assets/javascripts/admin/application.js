@@ -24,3 +24,13 @@ $(document).on('ready', function() {
 function set_timetout() {
   $('.alert').delay(3000).slideUp();
 }
+
+var category_new = function(){
+  $('#dn-category-new').click(function(){
+  $('.create_category').toggleClass('hidden');
+  });
+};
+
+$(document).on("turbolinks:load", function() {
+  category_new();
+});

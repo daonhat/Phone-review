@@ -27,8 +27,12 @@ en:
   title_base: "Base title"
   time_type: "%d/%m/%Y"
   delete: "Delete"
+  edit: "Edit"
+  create: "Create"
+  update : "Update"
   sure: "Are you sure"
   all_users: "All User"
+  create_success: "Create successfully"
   destroy_success: "Delete successfully"
   user:
     name: "Name"
@@ -41,7 +45,17 @@ en:
   admin:
     drs: PRS
     drsystem: PRSystem
+    dashbord: "Dashboard"
+    user: "User"
+    category: "Category"
   new_phone: "New Phone"
   admin_view: "Admin PRS"
   phone_created: "Phone created!"
+  category:
+    all_categories: "All category"
+    new: "New"
+    name: "Name"
+    created_at: "Created at"
+    updated_at: "Updated at"
+    category: "Category"
 
