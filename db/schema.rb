@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018150257) do
+ActiveRecord::Schema.define(version: 20161021024709) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 20161018150257) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

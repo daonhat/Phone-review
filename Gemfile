@@ -20,6 +20,10 @@ gem "paperclip"
 source "https://rails-assets.org/" do
   gem "rails-assets-adminlte"
 end
+gem "omniauth-facebook"
+gem "omniauth-twitter"
+gem "omniauth-google-oauth2"
+
 
 group :development, :test do
   gem "byebug", platform: :mri
