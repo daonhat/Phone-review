@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require turbolinks
 //= require ckeditor/init
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
 
 $(document).on('ready', function() {
