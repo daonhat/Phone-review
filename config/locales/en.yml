@@ -37,6 +37,11 @@ en:
   facebook: "facebook"
   google_oauth2: "google"
   twitter: "twitter"
+  edit_user: "Edit User"
+  update_profile: "Update Profile"
+  save_change: "Save"
+  profile_updated: "Profile updated"
+  user_fails: "User not exist"
   user:
     name: "Name"
     email: "Email"
