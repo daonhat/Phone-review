@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "books#index"
   resources :phones
+  resources :users, only: [:edit, :update]
 
   namespace :admin do
     root "dashboard#index", as: :root
-    resources :users, only: [:index, :destroy]
+    resources :users
     resources :categories
   end
 end

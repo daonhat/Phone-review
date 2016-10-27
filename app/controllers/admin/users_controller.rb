@@ -1,6 +1,19 @@
 class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
 
+  def edit
+
+  end
+
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = t :profile_updated
+      redirect_to admin_users_path
+    else
+      render :edit
+    end
+  end
+
   def index
     @users = User.page params[:page]
   end
@@ -9,5 +22,10 @@ class Admin::UsersController < Admin::BaseController
     @user.destroy
     flash[:success] = t :destroy_success
     redirect_to admin_users_path
+  end
+
+  private
+  def user_params
+    params.require(:user).permit :name, :avatar
   end
 end
