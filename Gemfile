@@ -17,6 +17,7 @@ gem "devise"
 gem "font-awesome-sass"
 gem "ckeditor"
 gem "paperclip"
+gem "ratyrate"
 source "https://rails-assets.org/" do
   gem "rails-assets-adminlte"
 end
