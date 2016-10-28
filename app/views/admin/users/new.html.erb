@@ -1,0 +1,6 @@
+<%= form_for [:admin, @user] do |f| %>
+  <%= f.label t"user.email" %> 
+  <%= f.text_field :email, class:"form-control" %>
+  <p><%= @user.errors[:email][0].capitalize if @user.errors[:email][0] %></p>
+  <%= f.submit t"user.create" %>
+<% end %>

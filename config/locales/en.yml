@@ -50,6 +50,8 @@ en:
     address: "Address"
     created_at: "Created at"
     updated_at: "Updated at"
+    email: "Email"
+    create: "Create"
   admin:
     drs: PRS
     drsystem: PRSystem
