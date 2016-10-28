@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20161027135223) do
     t.integer  "rater_id"
     t.string   "rateable_type"
     t.integer  "rateable_id"
-    t.float    "avg",           null: false
+    t.float    "avg",           default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20161027135223) do
   create_table "phones", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.float    "rate"
     t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
@@ -111,7 +110,6 @@ ActiveRecord::Schema.define(version: 20161027135223) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "password_digest"
     t.string   "avatar"
     t.string   "address"
     t.string   "phone_number"
