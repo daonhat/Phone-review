@@ -1,0 +1,16 @@
+<%= form_for @phone do |f| %>
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Title", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select :category_id, @categories, :id, :name,
+      {prompt: "Category"}, {class: "edit-form form-control"} %>
+  </div>
+
+  <div class="field">
+    <%= f.cktext_area :description %>
+  </div>
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
