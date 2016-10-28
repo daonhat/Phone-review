@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ratyrate_rater
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +10,7 @@ class User < ApplicationRecord
   has_many :phones, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
+
 
   class << self
     def from_omniauth auth

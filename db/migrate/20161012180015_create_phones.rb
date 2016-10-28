@@ -3,7 +3,6 @@ class CreatePhones < ActiveRecord::Migration[5.0]
     create_table :phones do |t|
       t.string :name
       t.string :description
-      t.float :rate
       t.references :user, foreign_key: true
       t.references :category, foreign_key: true
 

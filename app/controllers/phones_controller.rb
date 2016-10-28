@@ -4,7 +4,7 @@ class PhonesController < ApplicationController
   before_action :verify_admin, only: [:new, :create]
 
   def show
-
+    @phone_avg = @phone.average("quality").nil? ? 0.0 : @phone.average("quality").avg
   end
 
   def new
@@ -24,6 +24,6 @@ class PhonesController < ApplicationController
 
   private
   def phone_params
-    params.require(:phone).permit(:name, :description, :rate, :category_id)
+    params.require(:phone).permit(:name, :description, :category_id)
   end
 end
