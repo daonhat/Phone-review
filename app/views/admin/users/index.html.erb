@@ -1,5 +1,7 @@
 <% provide :title, t(:all_users) %>
 <h1 class="text-center"><%= t :all_users %></h1>
+<%= link_to t("user.create"), new_admin_user_path,
+  class: "btn btn-primary" %>
 <div class="panel-body">
   <table class="table">
     <thead>
