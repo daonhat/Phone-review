@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
 	def new
 	end
 
-	def create 
+	def create
 		@user.password = @user.email
 		if @user.save
 			redirect_to admin_users_path

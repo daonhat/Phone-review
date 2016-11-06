@@ -11,6 +11,13 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_attached_file :avatar, styles: {medium: "300x300>", thumb: "100x100>"},
+    default_url: "avatar/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment :avatar,
+    content_type: {content_type: ["image/jpeg", "image/jpg", "image/png", "image/gif"]},
+    size: {in: 0..2048.kilobytes}
+
 
   class << self
     def from_omniauth auth

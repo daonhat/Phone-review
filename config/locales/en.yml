@@ -42,6 +42,8 @@ en:
   save_change: "Save"
   profile_updated: "Profile updated"
   user_fails: "User not exist"
+  edit_user: "Update profile"
+  phone_number: "Phone number"
   user:
     name: "Name"
     email: "Email"
