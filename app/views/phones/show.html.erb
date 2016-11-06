@@ -18,5 +18,14 @@
 
 Quality  : <%= rating_for @phone, "quality", target: '#hintDiv', disable_after_rate: true %>
 <div id="hintDiv"></div>
-<%= @phone_avg %>
-<%= @phone.rates("quality").count %>
+Avarage:<%= @phone_avg %>
+</br>
+Rate count: <%= @phone.rates("quality").count %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(document).on('click', 'div.star img', function() {
+      location.reload();
+    });
+  })
+</script>

@@ -36,6 +36,8 @@
               <span class="hidden-xs"><%= current_user.email %></span>
             </a>
             <ul class="dropdown-menu">
+              <li><%= link_to t(:edit_user),
+                edit_user_path(current_user) %></li>
               <li><%= link_to t(:change_password),
                 edit_user_registration_path(current_user) %></li>
               <li class="divider"></li>
