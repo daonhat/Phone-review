@@ -1,0 +1,45 @@
+<%= form_for [:admin, @phone] do |f| %>
+
+  <div class="field">
+    <%= f.collection_select :category_id, @categories, :id, :name,
+      {}, {class: "edit-form form-control"} %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Title", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :os, placeholder: "Operation system", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :ram, placeholder: "Ram", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :memory, placeholder: "memory", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :screen, placeholder: "Screen", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :pin, placeholder: "Pin", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :front_camera, placeholder: "memory", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :back_camera, placeholder: "memory", class: "form-control" %>
+  </div>
+
+  <div data-no-turbolink>
+    <%= f.cktext_area :description, id: "ckeditor" %>
+  </div>
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

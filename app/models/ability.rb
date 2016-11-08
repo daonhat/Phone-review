@@ -8,7 +8,6 @@ class Ability
       if user.is_admin?
         can :manage, :all
       else
-        # byebug
         can :read, Phone
         cannot :create, Phone
         can :manage, User, id: user.id

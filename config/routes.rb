@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     root "dashboard#index", as: :root
     resources :users
     resources :categories
+    resources :phones
   end
 end

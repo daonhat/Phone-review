@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require ckeditor/init
 //= require adminlte
 //= require_tree .
 
@@ -33,4 +34,5 @@ var category_new = function(){
 
 $(document).on("turbolinks:load", function() {
   category_new();
+  CKEDITOR.replace('ckeditor');
 });
