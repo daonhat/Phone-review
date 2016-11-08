@@ -1,7 +1,10 @@
 class PhonesController < ApplicationController
   load_and_authorize_resource
-
   def show
-    @phone_avg = @phone.average("quality").nil? ? 0.0 : @phone.average("quality").avg
+		@voted = false
+		@review = Review.where(user_id: current_user.id, phone_id: @phone.id).first
+		unless @review.nil? 
+			@voted = true
+		end
   end
 end

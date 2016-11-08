@@ -13,3 +13,4 @@ Category.create! name: "Andoird"
 
 Category.create! name: "IOS"
 
+Phone.create! name:"Iphone"
