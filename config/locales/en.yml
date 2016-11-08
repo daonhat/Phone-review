@@ -39,10 +39,12 @@ en:
   twitter: "twitter"
   edit_user: "Edit User"
   update_profile: "Update Profile"
+  show_profile: "Profile"
   save_change: "Save"
   profile_updated: "Profile updated"
   user_fails: "User not exist"
   edit_user: "Update profile"
+  show_user: "Show profile"
   phone_number: "Phone number"
   user:
     name: "Name"
