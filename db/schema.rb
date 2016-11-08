@@ -64,10 +64,17 @@ ActiveRecord::Schema.define(version: 20161028070133) do
   create_table "phones", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "os"
+    t.string   "ram"
+    t.string   "screen"
+    t.string   "pin"
+    t.string   "front_camera"
+    t.string   "back_camera"
+    t.string   "memory"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["category_id"], name: "index_phones_on_category_id"
     t.index ["user_id"], name: "index_phones_on_user_id"
   end
@@ -112,6 +119,9 @@ ActiveRecord::Schema.define(version: 20161028070133) do
     t.string   "email"
     t.string   "address"
     t.string   "phone_number"
+    t.date     "dob"
+    t.integer  "gender"
+    t.string   "work"
     t.string   "is_admin"
     t.string   "boolean"
     t.datetime "created_at",                          null: false

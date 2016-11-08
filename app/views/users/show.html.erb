@@ -1,0 +1,42 @@
+<% provide :title, t(:show_user) %>
+<div class=" col-md-6 col-md-offset-3 dn-front-group">
+  <h1><%= t :show_profile %></h1>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <%= image_tag @user.avatar.url, class: "dn-front-user-img img-responsive" %>
+        </br>
+        <div class="form-control">
+          <p>Email: <%= @user.email%></p>
+        </div>
+
+        <div class="form-control">
+          <p>Name: <%= @user.name%></p>
+        </div>
+
+        <div class="form-control">
+          <p>Dob: <%= @user.dob%></p>
+        </div>
+
+        <div class="form-control">
+          <p>Address: <%= @user.address%></p>
+        </div>
+
+        <div class="form-control">
+          <p>Work: <%= @user.work%></p>
+        </div>
+
+        <div class="form-control">
+          <p>Gender: <%= @user.gender%></p>
+        </div>
+
+        <div class="form-control">
+          <p>Phone: <%= @user.phone_number%></p>
+        </div>
+
+        <%= link_to t(:edit), edit_user_path(@user),
+              class: "btn btn-primary" %>
+
+    </div>
+  </div>
+</div>

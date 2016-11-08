@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:edit]
   load_and_authorize_resource
 
+  def show
+
+  end
+
   def edit
 
   end
@@ -18,7 +22,8 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit :name, :avatar, :phone_number
+    params.require(:user).permit :name, :avatar, :phone_number, :address,
+      :dob, :gender, :work
   end
 
   def find_user

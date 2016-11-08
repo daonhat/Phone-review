@@ -18,6 +18,8 @@ class User < ApplicationRecord
     content_type: {content_type: ["image/jpeg", "image/jpg", "image/png", "image/gif"]},
     size: {in: 0..2048.kilobytes}
 
+  enum gender: ["male", "female", "trans"]
+
 
   class << self
     def from_omniauth auth
