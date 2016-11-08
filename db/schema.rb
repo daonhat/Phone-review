@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161028070133) do
 
-  create_table "average_caches", force: :cascade do |t|
-    t.integer  "rater_id"
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "avg",           default: 0.0, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -53,14 +44,6 @@ ActiveRecord::Schema.define(version: 20161028070133) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "overall_averages", force: :cascade do |t|
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "overall_avg",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "phones", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -71,6 +54,7 @@ ActiveRecord::Schema.define(version: 20161028070133) do
     t.string   "front_camera"
     t.string   "back_camera"
     t.string   "memory"
+    t.float    "rate_score"
     t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at",   null: false
@@ -103,13 +87,11 @@ ActiveRecord::Schema.define(version: 20161028070133) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string   "content"
-    t.string   "rate"
-    t.string   "float"
+    t.float    "rate_review"
     t.integer  "user_id"
     t.integer  "phone_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["phone_id"], name: "index_reviews_on_phone_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
