@@ -16,8 +16,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%#= image_tag user.avatar, class: "dn-admin-user-image",
-            size: Settings.size %></td>
+          <td><%= image_tag user.avatar, class: "dn-admin-user-image" %></td>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
           <td><%= user.phone_number %></td>
