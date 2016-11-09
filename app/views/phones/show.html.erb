@@ -44,7 +44,8 @@ $('#star').raty({
 			dataType: 'json',
 			success: function(data){
 				$("#avg-score").text(parseFloat(data.average).toFixed(2));
-				$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(2))
+				$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(2));
+				$("#star").raty('readOnly', true);
 			}
 				
 		});
