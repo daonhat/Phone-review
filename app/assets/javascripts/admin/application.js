@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require ckeditor/init
+//= require jquery.raty
 //= require adminlte
 //= require_tree .
 

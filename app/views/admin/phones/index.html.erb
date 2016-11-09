@@ -18,7 +18,7 @@
           (params[:page].nil? ? 0 : (params[:page].to_i - 1)*8) %>
         </td>
           <td><%= link_to phone.name, admin_phone_path(phone) %></td>
-          <td><%=  %></td>
+		  <td class="phone-star" data-rate-score="<%= phone.rate_score %>" title="<%= phone.rate_score %>"</td>
           <td><%= phone.created_at.strftime t(:time_type) %></td>
           <td class="dn-action-padding">
             <%= link_to t(:edit), edit_admin_phone_path(phone),
@@ -32,5 +32,18 @@
     </tbody>
   </table>
 </div>
+<script>
+$('.phone-star').raty({
+	hints: ['1', '2', '3','4', '5'],
+	score: function(){
+		return $(this).attr('data-rate-score');
+	},
+	readOnly: true,
+	starOn: '<%= asset_path("admin/star-on.png") %>',
+	starOff: '<%= asset_path("admin/star-off.png") %>',
+	starHalf: '<%= asset_path("admin/star-half.png") %>',
+
+});
+</script>
 <%= paginate @phones, theme: "twitter-bootstrap-3" %>
 
