@@ -1,0 +1,2 @@
+$('#comments-of-phone-<%= @phone.id %>').append("<%=j render 'comments/comment',phone: @phone, comment: @comment %>");
+$('#comment_content_<%= @phone.id %>').val('')

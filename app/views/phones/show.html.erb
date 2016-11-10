@@ -47,7 +47,7 @@ $('#star').raty({
 				$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(2));
 				$("#star").raty('readOnly', true);
 			}
-				
+
 		});
   	}
 });
@@ -72,3 +72,17 @@ $('#star').raty({
 });
 </script>
 <% end %>
+
+<% unless @phone.comments.nil? %>
+ <div id="comments-of-phone-<%= @phone.id %>">
+    <%= render @phone.comments %>
+</div>
+<% end %>
+
+<% if user_signed_in? %>
+  <div class="col-md-12">
+    <%= render "shared/comment_form", phone: @phone %>
+  </div>
+<% end %>
+
+ <div class="clearfix"></div>
