@@ -1,0 +1,21 @@
+<div class="row a_comment" id="comment-<%= comment.id %>">
+  <div class="col-md-1">
+    <span class="pull-right">
+      <%= image_tag comment.user.avatar, class: "dn-admin-user-image" %>
+    </span>
+  </div>
+  <div class="col-md-9">
+    <b><%= link_to comment.user.email, comment.user %></b>
+    <%= render "comments/comment_edit_form", comment: comment %>
+    <%#= comment.content %>
+    <br/>
+    <h6><%= time_ago_in_words(comment.created_at) %>. </h6>
+  </div>
+  <div class=" col-md-2">
+    <% if current_user? comment.user %>
+      <%= link_to "delete", comment, method: :delete, data: {confirm: t(:sure)}, remote: true %>
+      <%= link_to t(:edit), edit_comment_path(comment),
+        remote: true %>
+    <% end %>
+  </div>
+</div>
