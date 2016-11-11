@@ -13,4 +13,11 @@ Category.create! name: "Andoird"
 
 Category.create! name: "IOS"
 
-Phone.create! name:"Iphone"
+Phone.create! name:"Iphone", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2.", back_camera: "8."
+
+Phone.create! name:"Andoird", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2.", back_camera: "8."
+
+Phone.create! name:"windowphone", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2.", back_camera: "8."

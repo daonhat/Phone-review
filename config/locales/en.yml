@@ -49,6 +49,9 @@ en:
   edit_phone: "Update Phone"
   update_success: "Update successfully"
   phone_number: "Phone number"
+  search: "Search"
+  search_name: "Search name"
+  search_email: "Search email"
   user:
     name: "Name"
     email: "Email"

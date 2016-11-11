@@ -27,7 +27,9 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def index
-		@users = User.page params[:page]
+		@search = User.search params[:q]
+		@users = @search.result.page params[:page]
+		# byebug
 	end
 
 	def destroy
