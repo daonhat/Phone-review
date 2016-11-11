@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
     @phone = @comment.phone
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to @phone }
       format.js
     end
   end

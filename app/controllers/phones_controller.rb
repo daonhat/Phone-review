@@ -4,7 +4,7 @@ class PhonesController < ApplicationController
 		@voted = false
 		if user_signed_in?
 			@review = Review.where(user_id: current_user.id, phone_id: @phone.id).first
-			unless @review.nil? 
+			unless @review.nil?
 				@voted = true
 			end
 		end

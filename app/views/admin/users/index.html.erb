@@ -2,6 +2,20 @@
 <h1 class="text-center"><%= t :all_users %></h1>
 <%= link_to t("user.create"), new_admin_user_path,
   class: "btn btn-primary" %>
+
+<%= search_form_for @search, url: admin_users_path, method: :get do |f| %>
+  <div class="field col-md-6">
+    <%= f.label :search %>
+    <%= f.text_field :name_or_email_or_address_or_phone_number_cont,
+      class: "form-control", placeholder: t(:search_name) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t(:search), class: "btn btn-success dn-submit-admin-user" %>
+  </div>
+<% end %>
+
+
 <div class="panel-body">
   <table class="table">
     <thead>

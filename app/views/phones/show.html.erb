@@ -1,17 +1,50 @@
 <p>
-  <strong>Title</strong>
-  <%= @phone.name %>
+  <strong>Category</strong>
+  <%= @phone.category.name unless @phone.category.nil? %>
 </p>
 
 <p>
-  <strong>Category</strong>
-  <%= @phone.category.name unless @phone.category.nil? %>
+  <strong>Title</strong>
+  <%= @phone.name %>
 </p>
 
 <p>
   <strong>Description</strong>
   <%= raw @phone.description unless @phone.description.nil? %>
 </p>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <strong>Ram</strong>
+    <%= @phone.ram %>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Screen</strong>
+    <%= @phone.screen %>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Pin</strong>
+    <%= @phone.pin %>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Memory</strong>
+    <%= @phone.memory %>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Front Camera</strong>
+    <%= @phone.front_camera %>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Back Camera</strong>
+    <%= @phone.back_camera %>
+  </div>
+</div>
 <% if user_signed_in? && !@voted %>
 <div id="star"></div>
 <div id="target"></div>

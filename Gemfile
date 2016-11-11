@@ -18,6 +18,7 @@ gem "font-awesome-sass"
 gem "ckeditor"
 gem "paperclip"
 gem "ratyrate"
+gem "ransack", "~> 1.8.2"
 source "https://rails-assets.org/" do
   gem "rails-assets-adminlte"
 end
