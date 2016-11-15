@@ -37,6 +37,7 @@ class Admin::PhonesController < Admin::BaseController
   end
 
   def destroy
+    byebug
     @phone.destroy
     flash[:success] = t :destroy_success
     redirect_to admin_phones_path

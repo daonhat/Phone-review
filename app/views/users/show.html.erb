@@ -1,42 +1,70 @@
 <% provide :title, t(:show_user) %>
-<div class=" col-md-6 col-md-offset-3 dn-front-group">
-  <h1><%= t :show_profile %></h1>
+<div class="container">
+	<h1>Profile</h1>
+	<hr>
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-3">
+			<div class="text-center">
+			<%= image_tag @user.avatar.url, class: "avatar img-circle" %>
+			</div>
+		</div>
 
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <%= image_tag @user.avatar.url, class: "dn-front-user-img img-responsive" %>
-        </br>
-        <div class="form-control">
-          <p>Email: <%= @user.email%></p>
-        </div>
+		<!-- edit form column -->
+		<div class="col-md-9 personal-info">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Name:</label>
+					<div class="col-lg-8">
+						<p class="" type="text" value="" disabled="true"><%= @user.name %></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Email:</label>
+					<div class="col-lg-8">
+						<p class="" type="text"><%= @user.email %></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Date of birth:</label>
+					<div class="col-lg-8">
+						<p class="" type="text" value=""><%= @user.dob %></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Address:</label>
+					<div class="col-lg-8">
+						<p class="" type="text" value=""><%= @user.address %></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Work:</label>
+					<div class="col-lg-8">
+						<p class="" type="text" value=""><%= @user.work %></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Gender:</label>
+					<div class="col-lg-8">
+						<p class="" type="text" value=""><%= @user.gender%></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Phone Number:</label>
+					<div class="col-lg-8">
+						<p class="" type="text" value=""><%= @user.phone_number %></p>
+					</div>
+				</div>
 
-        <div class="form-control">
-          <p>Name: <%= @user.name%></p>
-        </div>
-
-        <div class="form-control">
-          <p>Dob: <%= @user.dob%></p>
-        </div>
-
-        <div class="form-control">
-          <p>Address: <%= @user.address%></p>
-        </div>
-
-        <div class="form-control">
-          <p>Work: <%= @user.work%></p>
-        </div>
-
-        <div class="form-control">
-          <p>Gender: <%= @user.gender%></p>
-        </div>
-
-        <div class="form-control">
-          <p>Phone: <%= @user.phone_number%></p>
-        </div>
-
-        <%= link_to t(:edit), edit_user_path(@user),
-              class: "btn btn-primary" %>
-
-    </div>
-  </div>
+				<div class="form-group">
+					<label class="col-md-3 control-label"></label>
+					<div class="col-md-8">
+						<%= link_to t(:edit), edit_user_path(@user),
+							class: "btn btn-primary" %>
+						<span></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
