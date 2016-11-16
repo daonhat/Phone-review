@@ -1,29 +1,69 @@
 <% provide :title, t(:edit_user) %>
-<div class=" col-md-6 col-md-offset-3 dn-front-group">
-  <h1><%= t :update_profile %></h1>
+<div class="">
+	<h1><%= t :update_profile %></h1>
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-3">
+			<div class="text-center">
+				<%= image_tag @user.avatar.url, class: "avatar img-circle" %>
+			</div>
+		</div>
 
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= form_for [:admin, @user] do |f| %>
+		<!-- edit form column -->
+		<div class="col-md-9 personal-info">
+			<%= form_for [:admin, @user], html: {class: 'form-horizontal'} do |f| %>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Name:</label>
+					<div class="col-lg-8">
+						<%= f.text_field :name, class: "form-control dn-form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Email:</label>
+					<div class="col-lg-8">
+						<%= f.email_field :email, class: "form-control dn-form-control", disabled: true %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Date of birth:</label>
+					<div class="col-lg-8">
+						<%= f.date_field :dob, class: "form-control dn-form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Address:</label>
+					<div class="col-lg-8">
+						<%= f.text_field :address, class: "form-control dn-form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Work:</label>
+					<div class="col-lg-8">
+						<%= f.text_field :work, class: "form-control dn-form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Gender:</label>
+					<div class="col-lg-8">
+						<%= f.select :gender, User.genders.keys, {}, class: "form-control dn-form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Phone Number:</label>
+					<div class="col-lg-8">
+						<%= f.text_field :phone_number, class: "form-control dn-form-control" %>
+					</div>
+				</div>
 
-        <%= image_tag @user.avatar.url, class: "dn-front-user-img" %>
-        <%= f.label :avatar %>
-        <span class="picture">
-          <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
-            class: "btn btn-default" %>
-        </span>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control dn-form-control" %>
+				<div class="form-group">
+					<label class="col-md-3 control-label"></label>
+					<div class="col-md-8">
+						<%= f.submit t(:save_change), class: "btn btn-primary dn-front-user-btn" %>
+					</div>
+				</div>
+			</form>
+			<% end %>
+		</div>
+	</div>
 
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control dn-form-control", disabled: true %>
-
-        <%= f.label :phone_number %>
-        <%= f.number_field :phone_number, class: "form-control dn-form-control"  %>
-
-        <%= f.submit t(:save_change), class: "btn btn-primary dn-front-user-btn" %>
-      <% end %>
-
-    </div>
-  </div>
 </div>
