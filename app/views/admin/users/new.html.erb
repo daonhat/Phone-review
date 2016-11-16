@@ -3,7 +3,7 @@
     <%= f.label t"user.email" %> 
     <%= f.text_field :email, class:"form-control" %>
   </div>
-  <p><%= @user.errors[:email][0].capitalize if @user.errors[:email][0] %></p>
+  <div class="col-md-12"><%= @user.errors[:email][0].capitalize if @user.errors[:email][0] %></div>
   <div class="col-md-12 clearfix create-user-button">
     <%= f.submit t("user.create"), 
       class: "btn btn-primary" %>
