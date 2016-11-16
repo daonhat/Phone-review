@@ -35,3 +35,27 @@
 
 	</div>
 
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= form_for [:admin, @user] do |f| %>
+
+        <%= image_tag @user.avatar.url, class: "dn-front-user-img" %>
+        <%= f.label :avatar %>
+        <span class="picture">
+          <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
+            class: "btn btn-default" %>
+        </span>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control dn-form-control" %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control dn-form-control", disabled: true %>
+
+        <%= f.label :phone_number %>
+        <%= f.number_field :phone_number, class: "form-control dn-form-control"  %>
+
+        <%= f.submit t(:save_change), class: "btn btn-primary dn-front-user-btn" %>
+      <% end %>
+
+    </div>
+  </div>

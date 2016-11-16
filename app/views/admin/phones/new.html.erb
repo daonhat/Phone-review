@@ -1,45 +1,77 @@
-<%= form_for [:admin, @phone] do |f| %>
-
-  <div class="field">
-    <%= f.collection_select :category_id, @categories, :id, :name,
-      {}, {class: "edit-form form-control"} %>
+<div class="center-block">
+  <h2 class="text-center">Create New Phone</h2>
+</div>
+<%= form_for [:admin, @phone], html: {class: 'form-horizontal center-block create-phone-form'} do |f| %>
+  <div class="field form-group">
+    <label class="col-lg-3 control-label">Phone title:</label>
+    <div class="col-lg-8">
+      <%= f.text_field :name, placeholder: "Phone Title", class: "form-control dn-form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.text_field :name, placeholder: "Title", class: "form-control" %>
+  <div class="field form-group">
+    <label class="col-lg-3 control-label">Phone description:</label>
+    <div class="col-lg-8">
+      <%= f.cktext_area :description, id: "ckeditor" %>
+    </div>
+  </diV>
+
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Phone category:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.collection_select :category_id, @categories, :id, :name,
+          {}, {class: "edit-form form-control"} %>
+      </div>
+    </div>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">Operation system:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :os, placeholder: "Operation system", class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.text_field :os, placeholder: "Operation system", class: "form-control" %>
+
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Ram</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :ram, placeholder: "Ram", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">Memory</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :memory, placeholder: "memory", class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.text_field :ram, placeholder: "Ram", class: "form-control" %>
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Screen</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :screen, placeholder: "Screen", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">Battery</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :pin, placeholder: "Battery", class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.text_field :memory, placeholder: "memory", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :screen, placeholder: "Screen", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :pin, placeholder: "Pin", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :front_camera, placeholder: "memory", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :back_camera, placeholder: "memory", class: "form-control" %>
-  </div>
-
-  <div data-no-turbolink>
-    <%= f.cktext_area :description, id: "ckeditor" %>
-  </div>
-
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Back camera:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :back_camera, placeholder: "Back camera", class: "form-control" %>
+      </div>
+    </div>
+ </div>
+ <div id="create-phone-button" class="center-block">
+  <%= f.submit "Create Phone", class: "btn btn-primary center-block" %>
+ </div>
 <% end %>
