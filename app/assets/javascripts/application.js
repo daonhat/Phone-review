@@ -14,10 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
-//= require ckeditor/init
 //= require jquery.raty
 //= require ratyrate
 //= require pgwslider
+//= require ckeditor/init
 //= require_tree .
 
 $(document).on('ready', function() {

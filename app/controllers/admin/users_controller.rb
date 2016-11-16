@@ -29,7 +29,6 @@ class Admin::UsersController < Admin::BaseController
 	def index
 		@search = User.search params[:q]
 		@users = @search.result.page params[:page]
-		# byebug
 	end
 
 	def destroy
@@ -40,7 +39,7 @@ class Admin::UsersController < Admin::BaseController
 
   private
   def user_params
-    params.require(:user).permit :name, :avatar, :phone_number, :address,
+    params.require(:user).permit :email, :name, :avatar, :phone_number, :address,
       :dob, :gender, :work
   end
 
