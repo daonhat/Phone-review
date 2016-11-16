@@ -17,6 +17,7 @@
 //= require ckeditor/init
 //= require jquery.raty
 //= require ratyrate
+//= require pgwslider
 //= require_tree .
 
 $(document).on('ready', function() {

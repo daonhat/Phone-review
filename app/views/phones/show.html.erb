@@ -1,121 +1,183 @@
-<p>
-  <strong>Category</strong>
-  <%= @phone.category.name unless @phone.category.nil? %>
-</p>
+<section>
+    <div class="">
+        <div class="container dn-phone-top">
+            <h2 class="pull-left">
+                <span>Dien thoai <%= @phone.name %></span>
+			</h2>
+			<div id="phone-rate-star-1" class="phone-rate-score pull-left clearfix"></div>
+			<script>
+				$('#phone-rate-star-1').raty({
+				readOnly: true,
+				score: '<%= @phone.rate_score %>',
+				precision: true
+				});
+			</script>
+			<div class="phone-rate-star-1-count pull-left clearfix"><%= @phone.reviews.count %> reviews</div>
+                <span class="phone-star" data-rate-score="<%= @phone.rate_score %>"></span>
+            </h2>
+        </div>
 
-<p>
-  <strong>Title</strong>
-  <%= @phone.name %>
-</p>
+    </div>
 
-<p>
-  <strong>Description</strong>
-  <%= raw @phone.description unless @phone.description.nil? %>
-</p>
+    <div class="dn-ct1-mid container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 dn-ct1-show-product">
+                  <h2>Hinh anh noi bat</h2>
+                    <ul class="pgwSlider">
+                        <li class="abc"><img class="img-responsive" src="http://static.pgwjs.com/img/pg/slider/paris.jpg"></li>
+                        <li class="abc"><img class="img-responsive" src="https://cdn.tgdd.vn/Products/Images/42/74113/samsung-galaxy-s7-2-400x460.png"></li>
+                        <li class="abc">
+                            <img src="https://cdn.tgdd.vn/Products/Images/42/74113/samsung-galaxy-s7-2-400x460.png">
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 dn-ct1-show-money">
+                  <h2>Thông số kỹ thuật</h2>
+                  <ul class="dn-parameter">
+                    <li>
+                      <span>Man hinh:</span>
+                      <div><%= @phone.screen.blank? ? "N/A" : @phone.screen %></div>
+                    </li>
+                    <li>
+                      <span>He dieu hanh</span>
+                      <div><%= @phone.os.blank? ? "N/A" : @phone.os %></div>
+                    </li>
+                    <li>
+                      <span>Camera truoc</span>
+                      <div><%= @phone.front_camera.blank? ? "N/A" : @phone.front_camera %></div>
+                    </li>
+                    <li>
+                      <span>Camera sau</span>
+                      <div><%= @phone.back_camera.blank? ? "N/A" : @phone.back_camera %></div>
+                    </li>
+                    <li>
+                      <span>Ram</span>
+                      <div><%= @phone.ram.blank? ? "N/A" : @phone.ram %></div>
+                    </li>
+                    <li>
+                      <span>Bo nho trong</span>
+                      <div><%= @phone.memory.blank? ? "N/A" : @phone.memory %></div>
+                    </li>
+                    <li>
+                      <span>Pin</span>
+                      <div><%= @phone.pin.blank? ? "N/A" : @phone.pin %></div>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="row dn-phone-show-desc">
+              <%= raw @phone.description unless @phone.description.nil? %>
+            </div>
+        </div>
+    </div>
 
-<div class="row">
+    <div class="dn-ct1-bot">
+        <div class="container">
+            <div>
+                <div class="col-sm-7 dn-ct1-bot-left">
+                    <div class="row dn-ct1-bot-item">
+                      <% if user_signed_in? && !@voted %>
+                        <div class="col-xs-6">
+                          <h3 class="rate-h3 rate-h3-text">Hay gui danh gia cua ban</h3>
+                        </div>
 
-  <div class="col-md-6">
-    <strong>Ram</strong>
-    <%= @phone.ram %>
-  </div>
+                        <div class="col-xs-6">
+                          <div id="star"></div>
+                            <script>
+                            $('#star').raty({
+                              click: function(score, evt) {
+                                phone_id = '<%= @phone.id%>';
+                                user_id = '<%= current_user.id%>';
+                                review = {
+                                    'user_id': user_id,
+                                    'phone_id': phone_id,
+                                    'rate_review': score
+                                };
+                                $.ajax({
+                                  url: '/phones/<%= @phone.id%>/reviews',
+                                  type: 'POST',
+                                  data: {
+                                    'review': review
+                                  },
+                                  dataType: 'json',
+                                  success: function(data){
+                                    $("#star").raty('readOnly', true);
+                                    $("#avg-score").text(parseFloat(data.average).toFixed(2));
+                                    $("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
+                                    $(".rate-h3-text").text("Danh gia cua ban")
+									$("#phone-rate-star-1").raty('score',parseFloat(data.average).toFixed(2));
+									$(".phone-rate-star-1-count").text(parseFloat(data.reviews_count).toFixed(0)+' reviews');
+                                  }
 
-  <div class="col-md-6">
-    <strong>Screen</strong>
-    <%= @phone.screen %>
-  </div>
+                                });
+                                }
+                            });
+                            </script>
+                        </div>
+                      <% elsif user_signed_in? && @voted %>
+                        <div class="col-xs-6">
+                          <h3 class="rate-h3">Danh gia cua ban</h3>
+                        </div>
+                        <div class="col-xs-6">
+                          <div id="star"></div>
+                          <script>
+                          $('#star').raty({
+                            hints: ['1', '2', '3','4', '5'],
+                            readOnly: true,
+                            score: '<%= @review.rate_review %>',
+                          });
+                          </script>
+                        </div>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="col-sm-5 dn-ct1-bot-right">
+                    <div class="dn-bot-right-content text-center">
+                        <h4 class="dn-semiBold">SẢN PHẨM BẠN CÓ THỂ YÊU THÍCH</h4>
+                        <ul>
+                            <li>
+                                <a href="http://bello.mastercus.com/glass/detail/25">
+                                    <img src="" alt="">
+                                    <p class="dn-semiBold">SMITH DOCKSIDE</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://bello.mastercus.com/glass/detail/26">
+                                    <img src="" alt="">
+                                    <p class="dn-semiBold">SMITH COLETTE</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-7 dn-phone-last">
+                  <div class="dn-count-cmt">
+                    <h4 class="dn-count"><b><%= @comment_count %> binh luan</b></h4>
+                  </div>
+                  <% unless @phone.comments.nil? %>
+                    <div id="comments-of-phone-<%= @phone.id %>">
+                      <%= render @comments %>
+                      <%= paginate @comments, theme: "twitter-bootstrap-3" %>
+                    </div>
+                  <% end %>
 
-  <div class="col-md-6">
-    <strong>Pin</strong>
-    <%= @phone.pin %>
-  </div>
 
-  <div class="col-md-6">
-    <strong>Memory</strong>
-    <%= @phone.memory %>
-  </div>
+                  <% if user_signed_in? %>
+                    <div class="col-md-12 dn-cmt-form">
+                      <%= render "shared/comment_form", phone: @phone %>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <div class="col-md-6">
-    <strong>Front Camera</strong>
-    <%= @phone.front_camera %>
-  </div>
-
-  <div class="col-md-6">
-    <strong>Back Camera</strong>
-    <%= @phone.back_camera %>
-  </div>
-</div>
-<% if user_signed_in? && !@voted %>
-<div id="star"></div>
-<div id="target"></div>
-Average score: <div id="avg-score">
-  <%= @phone.rate_score.round(2) unless @phone.rate_score.nil? %>
-</div>
-Reviewed count: <div id="reviews-count">
-  <%= @phone.reviews.count  %>
-</div>
-<script>
-$('#star').raty({
-	hints: ['1', '2', '3','4', '5'],
-	target: '#target',
-	targetFormat: 'You are choosing {score}',
-	targetText: 'none',
-	click: function(score, evt) {
-		phone_id = '<%= @phone.id%>';
-		user_id = '<%= current_user.id%>';
-		review = {
-				'user_id': user_id,
-				'phone_id': phone_id,
-				'rate_review': score
-		};
-		$.ajax({
-			url: '/phones/<%= @phone.id%>/reviews',
-			type: 'POST',
-			data: {
-				'review': review
-			},
-			dataType: 'json',
-			success: function(data){
-				$("#star").raty('readOnly', true);
-				$("#avg-score").text(parseFloat(data.average).toFixed(2));
-				$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(000000000));
-			}
-
-		});
-  	}
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.pgwSlider').pgwSlider({
+      listPosition : 'left'
+    });
 });
 </script>
-<% elsif user_signed_in? && @voted %>
-<div id="star"></div>
-<div id="target"></div>
-Average score: <div id="avg-score">
-  <%= @phone.rate_score.round(2) unless @phone.rate_score.nil? %>
-</div>
-Reviewed count: <div id="reviews-count">
-  <%= @phone.reviews.count  %>
-</div>
-<script>
-$('#star').raty({
-	hints: ['1', '2', '3','4', '5'],
-	readOnly: true,
-	score: '<%= @review.rate_review %>',
-	target: '#target',
-	targetFormat: 'You choosed <%= @review.rate_review %>',
-	targetText: 'none',
-});
-</script>
-<% end %>
-
-<% unless @phone.comments.nil? %>
- <div id="comments-of-phone-<%= @phone.id %>">
-    <%= render @phone.comments %>
-</div>
-<% end %>
-
-<% if user_signed_in? %>
-  <div class="col-md-12">
-    <%= render "shared/comment_form", phone: @phone %>
-  </div>
-<% end %>
-
- <div class="clearfix"></div>
