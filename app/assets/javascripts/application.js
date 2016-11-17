@@ -13,13 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require jquery.raty
 //= require ratyrate
-//= require pgwslider
 //= require ckeditor/init
-//= require_tree .
-
+//= require lightslider
 $(document).on('ready', function() {
   set_timetout();
 });
