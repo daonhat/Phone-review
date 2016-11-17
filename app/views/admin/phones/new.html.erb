@@ -1,7 +1,7 @@
 <div class="center-block">
   <h2 class="text-center">Create New Phone</h2>
 </div>
-<%= form_for [:admin, @phone], html: {class: 'form-horizontal center-block create-phone-form'} do |f| %>
+<%= form_for [:admin, @phone], html: {class: 'form-horizontal center-block create-phone-form', multipart: true} do |f| %>
   <div class="field form-group">
     <label class="col-lg-3 control-label">Phone title:</label>
     <div class="col-lg-8">
@@ -71,7 +71,32 @@
       </div>
     </div>
  </div>
+  <div class="field form-group">
+    <div class="images-upload col-lg-6 clearfix">
+      <label class="col-lg-5 control-label">Images: </label>
+      <div class="phone-props col-lg-7">
+        <input id="phone-images-file" name="img[]" type="file" multiple >
+      </div>
+    </div>
+    <div class="add-image-upload col-lg-6 cleafix"><span class="btn btn-default">Add image</span></div>
+ </div>
+ 
  <div id="create-phone-button" class="center-block">
   <%= f.submit "Create Phone", class: "btn btn-primary center-block" %>
  </div>
+   <script>
+ $(document).ready(function(){
+        $("#phone-images-file").fileinput({
+          showUpload: false
+        });
+        $("#file").on('filebatchuploadcomplete', function(event, files, extra) {
+            if(!confirm('Bạn có muốn upload tiếp không?')){
+                location.reload();
+            }
+        });
+        $(".add-image-upload").click(function(){
+          var input_div = $("div.images-upload"); 
+        }); 
+    });
+   </script>
 <% end %>
