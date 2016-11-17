@@ -15,8 +15,12 @@
 //= require bootstrap
 //= require jquery.raty
 //= require ratyrate
-//= require ckeditor/init
 //= require lightslider
+//= require turbolinks
+//= require swiper.min
+//= require ckeditor/init
+//= require_tree .
+
 $(document).on('ready', function() {
   set_timetout();
 });
