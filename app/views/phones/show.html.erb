@@ -23,16 +23,47 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 dn-ct1-show-product">
-                  <h2>Hinh anh noi bat</h2>
-                    <ul class="pgwSlider">
-                        <li class="abc"><img class="img-responsive" src="http://static.pgwjs.com/img/pg/slider/paris.jpg"></li>
-                        <li class="abc"><img class="img-responsive" src="https://cdn.tgdd.vn/Products/Images/42/74113/samsung-galaxy-s7-2-400x460.png"></li>
-                        <li class="abc">
-                            <img src="https://cdn.tgdd.vn/Products/Images/42/74113/samsung-galaxy-s7-2-400x460.png">
-                        </li>
-                    </ul>
+                  <h2>Phone images </h2>
+                  <div class="clearfix" style="max-width:474px; border: solid 1px red;">
+                    <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                      <li data-thumb="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"> 
+                        <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
+                      </li>
+                      <li data-thumb="img/thumb/cS-2.jpg"> 
+                        <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
+                      </li>
+                      <li data-thumb="img/thumb/cS-2.jpg"> 
+                        <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
+                      </li>
+                      <li data-thumb="img/thumb/cS-2.jpg"> 
+                        <img src="http://www.jqueryscript.net/images/Lightweight-Responsive-Content-Slider-Plugin-with-jQuery-CSS3-lightslider.jpg" />
+                      </li>
+                      <li data-thumb="img/thumb/cS-2.jpg"> 
+                        <img src=" https://www.digium.com/sites/digium/files/content/d45-angle-v9.jpg"/>
+                      </li>
+                      <li data-thumb="img/thumb/cS-2.jpg"> 
+                        <img src="http://www.jqueryscript.net/images/Lightweight-Responsive-Content-Slider-Plugin-with-jQuery-CSS3-lightslider.jpg" />
+                      </li>
+                   </ul>
+                  </div>
                 </div>
-                <div class="col-sm-5 dn-ct1-show-money">
+            <script>
+            $(document).ready(function() {
+              $('#image-gallery').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:9,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                  $('#image-gallery').removeClass('cS-hidden');
+                }  
+              });
+            });
+            </script>
+               <div class="col-sm-5 dn-ct1-show-money">
                   <h2>Thông số kỹ thuật</h2>
                   <ul class="dn-parameter">
                     <li>
@@ -304,8 +335,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-    $('.pgwSlider').pgwSlider({
-      listPosition : 'left'
-    });
-});
+      
+	});
 </script>
