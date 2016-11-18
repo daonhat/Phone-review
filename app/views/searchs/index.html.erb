@@ -1,20 +1,10 @@
-<div class="dn-page-header container">
-  <h1>PROFESSIONAL REVIEWS <span>/ by THE FIRST TEAM</span></h1>
-</div>
-
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="index-1.JPG"></div>
-        <div class="swiper-slide"><img src="http://review.mainguyen.vn/img/2015/11/topic/m/Z5-bia-review.jpg"></div>
-        <div class="swiper-slide"><img src="index-5.jpg"></div>
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next dn-button-slide"></div>
-    <div class="swiper-button-prev dn-button-slide"></div>
-</div>
-
 <div class="container-fluid content">
   <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+      <h1><%= @sum %> results</h1>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-9">
         <section class="dn-review-cates">
@@ -31,11 +21,6 @@
                         <%= @phones[0].comments.count %>
                       </span>
                     </div>
-                  </div>
-
-                  <div class="dn-index-star">
-                    <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
                   </div>
                 </div>
               </div>
@@ -56,10 +41,6 @@
                       </span>
                     </div>
                   </div>
-                  <div class="dn-index-star">
-                    <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
-                  </div>
                 </div>
               </div>
             </a>
@@ -76,10 +57,6 @@
                     <span class="comment">
                       <%= @phones[2].comments.count %>
                     </span>
-                  </div>
-                  <div class="dn-index-star">
-                    <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
                   </div>
                 </div>
               </div>
@@ -99,10 +76,6 @@
                         <%= @phones[3].comments.count %>
                       </span>
                     </div>
-                  </div>
-                  <div class="dn-index-star">
-                    <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
                   </div>
                 </div>
               </div>
@@ -124,7 +97,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -136,7 +109,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -148,7 +121,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -160,7 +133,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -172,7 +145,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -184,7 +157,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -196,7 +169,7 @@
             <li>
               <div class="dn-top-content-a">
                 <a href="#">
-                  <img src="/iphone1.png">
+                  <img src="iphone1.png">
                 </a>
               </div>
               <div class="dn-top-content-name">
@@ -211,92 +184,5 @@
 
       <div class="col-md-9 dn-pagination"><%= paginate @phones %></div>
     </div>
-    <div class="row hl-favorite">
-      <div class="col-xs-12 text-center hl-title">
-        <span>ĐƯỢC ƯA CHUỘNG</span>
-      </div>
-      <div class="swiper-container1">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide hl-favorite-slide1">
-             <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name1</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name2</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name3</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name4</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name5</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name6</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name7</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name8</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name9</span>
-          </div>
-        </div>
-
-        <div class="swiper-button-next hl-prev1"></div>
-        <div class="swiper-button-prev hl-next1"></div>
-      </div>
-          <div class="col-md-12" style="height: 1px;background-color: #E8E8E8;margin: 30px 0"></div>
-    </div>
   </div>
 </div>
-
-<script>
-var swiper = new Swiper('.swiper-container', {
-    pagination: '.swiper-pagination',
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-    paginationClickable: true,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: 50000,
-    autoplayDisableOnInteraction: false,
-    loop: true
-});
-</script>
-
-<script>
-var swiper2 = new Swiper('.hl-favorite .swiper-container1', {
-    autoplay: 50000,
-    autoplayDisableOnInteraction: false,
-    nextButton: '.hl-next1',
-    prevButton: '.hl-prev1',
-    slidesPerView: 5,
-    slidesPerGroup : 5,
-    paginationClickable: true,
-    loop: true,
-    speed : 1000
-});
-</script>
-<script>
-$('p.phone-star').raty({
-  hints: ['1', '2', '3','4', '5'],
-  score: function(){
-    return $(this).attr('data-rate-score');
-  },
-  readOnly: true
-
-});
-</script>

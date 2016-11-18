@@ -2,7 +2,7 @@ class PhonesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @phones = Phone.page params[:page]
+    @phones = Phone.page(params[:page]).per 4
     # select phone.*
     # from phone inner join comment on phone.id = comment.phone_id
     # group by phone.id
