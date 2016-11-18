@@ -24,25 +24,19 @@
             <div class="row">
                 <div class="col-sm-7 dn-ct1-show-product">
                   <h2>Phone images </h2>
-                  <div class="clearfix" style="max-width:474px; border: solid 1px red;">
+                  <div class="clearfix" style="max-width:474px;">
                     <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                      <li data-thumb="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"> 
+                      <li data-thumb="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg">
                         <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
                       </li>
-                      <li data-thumb="img/thumb/cS-2.jpg"> 
+                      <li data-thumb="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg">
                         <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
                       </li>
-                      <li data-thumb="img/thumb/cS-2.jpg"> 
-                        <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
+                      <li data-thumb="http://i-cdn.phonearena.com/images/phones/42885-xlarge/Apple-iPhone-5s-0.jpg">
+                        <img src="http://i-cdn.phonearena.com/images/phones/42885-xlarge/Apple-iPhone-5s-0.jpg" />
                       </li>
-                      <li data-thumb="img/thumb/cS-2.jpg"> 
-                        <img src="http://www.jqueryscript.net/images/Lightweight-Responsive-Content-Slider-Plugin-with-jQuery-CSS3-lightslider.jpg" />
-                      </li>
-                      <li data-thumb="img/thumb/cS-2.jpg"> 
-                        <img src=" https://www.digium.com/sites/digium/files/content/d45-angle-v9.jpg"/>
-                      </li>
-                      <li data-thumb="img/thumb/cS-2.jpg"> 
-                        <img src="http://www.jqueryscript.net/images/Lightweight-Responsive-Content-Slider-Plugin-with-jQuery-CSS3-lightslider.jpg" />
+                      <li data-thumb="http://img.quantrimang.com/photos/image/042014/04/windows-phone3.jpg">
+                        <img src="http://img.quantrimang.com/photos/image/042014/04/windows-phone3.jpg" />
                       </li>
                    </ul>
                   </div>
@@ -59,7 +53,7 @@
                 loop:true,
                 onSliderLoad: function() {
                   $('#image-gallery').removeClass('cS-hidden');
-                }  
+                }
               });
             });
             </script>
@@ -127,13 +121,13 @@
 										'phone_id': phone_id,
 										'rate_review': score
 									};
-									//for bug: while ajax process has not done, but user change 
+									//for bug: while ajax process has not done, but user change
 									//the score that has been sended in ajax request.
-									//So the really sended score value is different 
+									//So the really sended score value is different
 									//from showed value.
-									//therefore it must be set readOnly attr 
+									//therefore it must be set readOnly attr
 									//before calling ajax
-									$("#star").raty('readOnly', true);
+									$("#star-1").raty('readOnly', true);
 									$.ajax({
 										url: '/phones/<%= @phone.id%>/reviews',
 										type: 'POST',
@@ -154,7 +148,7 @@
 									});
 							  }
                             });
-							//edit just created rate		
+							//edit just created rate
 							function create_edit_button_for_new_review(review ){
 
 								$(".new-review .edit-review-button").click(function(){
@@ -170,11 +164,11 @@
 												'review_id': review_id,
 												'score': score
 											};
-											//for bug: while ajax process has not done, but user change 
+											//for bug: while ajax process has not done, but user change
 											//the score that has been sended in ajax request.
-											//So the really sended score value is different 
+											//So the really sended score value is different
 											//from showed value.
-											//therefore it must be set readOnly attr 
+											//therefore it must be set readOnly attr
 											//before calling ajax
 											$("#star-1").raty('readOnly', true);
 											$.ajax({
@@ -209,7 +203,7 @@
 
 
 							}
-							
+
                             </script>
                         </div>
 						<div class="col-xs-1 new-review">
@@ -249,11 +243,11 @@
 											'review_id': review_id,
 											'score': score
 										};
-										//for bug: while ajax process has not done, but user change 
+										//for bug: while ajax process has not done, but user change
 										//the score that has been sended in ajax request.
-										//So the really sended score value is different 
+										//So the really sended score value is different
 										//from showed value.
-										//therefore it must be set readOnly attr 
+										//therefore it must be set readOnly attr
 										//before calling ajax
 										$("#star-2").raty('readOnly', true);
 										$.ajax({
@@ -277,7 +271,7 @@
 								});
 
 							});
-							
+
 							$(".old-review .cancel-review-button").click(function(){
 								var obj = $(this);
 								obj.toggleClass("hidden");
@@ -286,7 +280,7 @@
 								$("#star-2").raty('set', {'score': review_score});
 								$("#star-2").raty('readOnly', true);
 							});
-							
+
 						</script>
                       <% end %>
                     </div>
@@ -335,6 +329,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-      
+
 	});
 </script>

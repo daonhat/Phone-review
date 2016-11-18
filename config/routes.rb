@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 		resources :reviews
 	end
 
+  resources :searchs, only: [:index]
+
   resources :comments
 
   resources :users, only: [:show, :edit, :update]

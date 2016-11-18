@@ -14,10 +14,28 @@ Category.create! name: "Andoird"
 Category.create! name: "IOS"
 
 Phone.create! name:"Iphone", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
-  front_camera: "2.", back_camera: "8."
+  front_camera: " 2Mp", back_camera: "8 Mp"
 
 Phone.create! name:"Andoird", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
-  front_camera: "2.", back_camera: "8."
+  front_camera: "2 Mp", back_camera: "8 Mp"
 
-Phone.create! name:"windowphone", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
-  front_camera: "2.", back_camera: "8."
+Phone.create! name:"Andoird-1", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-2", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-3", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-4", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-5", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-6", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-7", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-8", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoird-9", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"
+Phone.create! name:"Andoirdy", os: "Andoird 4.1", ram: "2GB", screen: "", pin: "3000mAh",
+  front_camera: "2 Mp", back_camera: "8 Mp"

@@ -52,6 +52,7 @@
 .main{
   margin-top: 80px;
   margin-bottom: 60px;
+  min-height: 500px;
 }
 
 .sign-up{
@@ -444,3 +445,60 @@ body{
     font-size: 30px;
   }
 }
+
+.dn-admin-user-image-1{
+  border-radius: 5px;
+  width: 25px;
+  height: 100%;
+}
+
+.btn-upload{
+  width: 100%;
+}
+
+.dn-pagination{
+  .pagination{
+    font-size: 20px;
+    font-family: 'Open Sans Condensed', Helvetica, sans-serif;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+
+    .first, .last{
+      display: none;
+    }
+    .current{
+      border-bottom: 2px solid #db0000;
+    }
+  }
+}
+
+.dn-pagination .pagination span, a{
+  border-bottom: 2px solid transparent;
+  margin: 0 3px;
+  padding: 0 7px 0 10px;
+  -webkit-transition: background-color 0.3s ease 0s;
+  -moz-transition: background-color 0.3s ease 0s;
+  -ms-transition: background-color 0.3s ease 0s;
+  -o-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
+  color: #777;
+}
+.dn-pagination .pagination a:hover {
+  background: rgba(158, 158, 158, 0.39);
+  color: #777;
+}
+
+.dn-index-star{
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  line-height: 1.4;
+  min-width: 150px;
+  width: 50%;
+  img{
+    display: inline-block;
+    width: 25px;
+  }
+}
+
