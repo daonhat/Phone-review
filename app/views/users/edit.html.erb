@@ -1,0 +1,43 @@
+<% provide :title, t(:edit_user) %>
+<div class="container">
+  <h1><%= t :update_profile %></h1>
+
+  <div class="row">
+    <%= form_for @user do |f| %>
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="text-center">
+        <%= image_tag @user.avatar.url, class: "avatar img-circle" %>
+        <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
+            class: "btn btn-default" %>
+      </div>
+    </div>
+
+    <div class="col-md-9 personnal-info ">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control", disabled: true %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :date_of_birth %>
+        <%= f.date_field :dob, class: "form-control" %>
+
+        <%= f.label :address %>
+        <%= f.text_field :address, class: "form-control" %>
+
+        <%= f.label :work %>
+        <%= f.text_field :work, class: "form-control" %>
+
+        <%= f.label :gender %>
+        <%= f.select :gender, User.genders.keys, {}, class: "form-control" %>
+
+        <%= f.label :phone_number %>
+        <%= f.number_field :phone_number, class: "form-control"  %>
+
+        <%= f.submit t(:save_change), class: "btn btn-primary" %>
+
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<%= form_for resource, as: resource_name,
+  url: registration_path(@user), html: {class: "form-register" } do |f| %>
+
+  <div class="form-register-with-email">
+      <div class="form-white-background">
+
+          <div class="form-title-row">
+              <h1>Create an account</h1>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Email</span>
+                  <%= f.email_field :email, autofocus: true %>
+              </label>
+              <p><%= @user.errors[:email][0].capitalize if @user.errors[:email][0] %></p>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Password</span>
+                  <%= f.password_field :password, autocomplete: "off" %>
+              </label>
+              <p><%= @user.errors[:password][0].capitalize if @user.errors[:password][0] %></p>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Password confirmation</span>
+                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <button type="submit">Register</button>
+          </div>
+
+      </div>
+
+      <a href="sign_in" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+
+  </div>
+
+  <div class="form-sign-in-with-social">
+
+      <div class="form-row form-title-row">
+          <span class="form-title">Sign in with</span>
+      </div>
+
+      <!-- <a href="#" class="form-google-button">Google</a> -->
+      <a href="#" class="form-facebook-button">Facebook</a>
+      <!-- <a href="#" class="form-twitter-button">Twitter</a> -->
+
+  </div>
+<% end %>

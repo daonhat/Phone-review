@@ -1,0 +1,54 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.dn-content{
+  min-height: 700px!important
+}
+
+.dn-front-user-img{
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+}
+
+.dn-admin-user-image{
+  border-radius: 5px;
+  width: 50px;
+  height: 40%;
+}
+
+td.phone-star img{
+  height: 15px;
+}
+
+.user-buttons{
+	margin: 80px 0px 40px 0px;
+}
+.panel-body tbody tr:nth-child(odd){
+  background-color: rgba(0, 192, 239, 0.09);
+}
+.panel-body tbody tr:nth-child(even){
+  background-color: rgba(0, 128, 0, 0.12);
+}
+.panel-body thead tr{
+	color: #ff7f7f;
+}
+.content-wrapper{
+	background-color: white;
+}
+.personal-info{
+	background-color: rgba(60, 141, 188, 0.07);
+    border-radius: 8px;
+	padding-top: 10px;
+}
+
+.create-user-button{
+	padding-top: 15px;
+}
+
+.create-phone-form{
+	width: 90%;
+	padding-top: 20px;
+}

@@ -1,0 +1,61 @@
+<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<%= image_tag @user.avatar.url, class: "dn-front-user-img img-responsive" %>
+			</br>
+			<div class="">
+				<p>Email: <%= @user.email%></p>
+			</div>
+
+			<div class="">
+				<p>Name: <%= @user.name%></p>
+			</div>
+
+			<div class="">
+				<p>Dob: <%= @user.dob%></p>
+			</div>
+
+			<div class="">
+				<p>Address: <%= @user.address%></p>
+			</div>
+
+			<div class="">
+				<p>Work: <%= @user.work%></p>
+			</div>
+
+			<div class="">
+				<p>Gender: <%= @user.gender%></p>
+			</div>
+
+			<div class="">
+				<p>Phone: <%= @user.phone_number%></p>
+			</div>
+
+			<%= link_to t(:edit), edit_user_path(@user),
+				class: "btn btn-primary" %>
+
+	</div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= form_for [:admin, @user] do |f| %>
+
+        <%= image_tag @user.avatar.url, class: "dn-front-user-img" %>
+        <%= f.label :avatar %>
+        <span class="picture">
+          <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
+            class: "btn btn-default" %>
+        </span>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control dn-form-control" %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control dn-form-control", disabled: true %>
+
+        <%= f.label :phone_number %>
+        <%= f.number_field :phone_number, class: "form-control dn-form-control"  %>
+
+        <%= f.submit t(:save_change), class: "btn btn-primary dn-front-user-btn" %>
+      <% end %>
+
+    </div>
+  </div>

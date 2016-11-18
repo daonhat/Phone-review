@@ -1,0 +1,17 @@
+<%= link_to t(:edit), edit_admin_phone_path(@phone),
+  class: "btn btn-primary" %>
+<p>
+  <strong>Category</strong>
+  <%= @phone.category.name %>
+</p>
+
+<p>
+  <strong>Title</strong>
+  <%= @phone.name %>
+</p>
+
+<p>
+  <strong>Body</strong>
+  <%= raw @phone.description %>
+</p>
+
