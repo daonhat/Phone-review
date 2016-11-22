@@ -24,38 +24,30 @@
             <div class="row">
                 <div class="col-sm-7 dn-ct1-show-product">
                   <h2>Phone images </h2>
-                  <div class="clearfix" style="max-width:474px;">
-                    <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                      <li data-thumb="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg">
-                        <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
-                      </li>
-                      <li data-thumb="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg">
-                        <img src="https://i5.walmartimages.com/dfw/4ff9c6c9-9356/k2-_c59a878c-3d51-4807-aabd-84b0410de921.v1.jpg"/>
-                      </li>
-                      <li data-thumb="http://i-cdn.phonearena.com/images/phones/42885-xlarge/Apple-iPhone-5s-0.jpg">
-                        <img src="http://i-cdn.phonearena.com/images/phones/42885-xlarge/Apple-iPhone-5s-0.jpg" />
-                      </li>
-                      <li data-thumb="http://img.quantrimang.com/photos/image/042014/04/windows-phone3.jpg">
-                        <img src="http://img.quantrimang.com/photos/image/042014/04/windows-phone3.jpg" />
-                      </li>
-                   </ul>
-                  </div>
+                  <div class="swiper-container dn-show-slide-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(https://cdn1.tgdd.vn/Products/Images/42/74927/htc-10-bac-1-1.jpg)"></div>
+                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(https://cdn.tgdd.vn/Products/Images/42/74927/htc-10-9-1.jpg)"></div>
+                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://review.mainguyen.vn/img/2014/10/topic/m/Chi-tiet-Lumia830-8.jpg)"></div>
+                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://review.mainguyen.vn/img/2014/10/topic/m/Bia.jpg)"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
                 </div>
             <script>
-            $(document).ready(function() {
-              $('#image-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                thumbItem:9,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
-                onSliderLoad: function() {
-                  $('#image-gallery').removeClass('cS-hidden');
-                }
+              var swiper = new Swiper('.dn-show-slide-container', {
+                  pagination: '.swiper-pagination',
+                  effect: 'cube',
+                  grabCursor: true,
+                  loop: true,
+                  cube: {
+                      shadow: true,
+                      slideShadows: true,
+                      shadowOffset: 20,
+                      shadowScale: 0.94
+                  }
               });
-            });
             </script>
                <div class="col-sm-5 dn-ct1-show-money">
                   <h2>Thông số kỹ thuật</h2>
@@ -65,27 +57,31 @@
                       <div><%= @phone.screen.blank? ? "N/A" : @phone.screen %></div>
                     </li>
                     <li>
-                      <span>He dieu hanh</span>
+                      <span>He dieu hanh:</span>
                       <div><%= @phone.os.blank? ? "N/A" : @phone.os %></div>
                     </li>
                     <li>
-                      <span>Camera truoc</span>
+                      <span>Camera truoc:</span>
                       <div><%= @phone.front_camera.blank? ? "N/A" : @phone.front_camera %></div>
                     </li>
                     <li>
-                      <span>Camera sau</span>
+                      <span>Camera sau:</span>
                       <div><%= @phone.back_camera.blank? ? "N/A" : @phone.back_camera %></div>
                     </li>
                     <li>
-                      <span>Ram</span>
+                      <span>CPU</span>
+                      <div><%= @phone.pin.blank? ? "N/A" : @phone.pin %></div>
+                    </li>
+                    <li>
+                      <span>RAM:</span>
                       <div><%= @phone.ram.blank? ? "N/A" : @phone.ram %></div>
                     </li>
                     <li>
-                      <span>Bo nho trong</span>
+                      <span>Bo nho trong:</span>
                       <div><%= @phone.memory.blank? ? "N/A" : @phone.memory %></div>
                     </li>
                     <li>
-                      <span>Pin</span>
+                      <span>Pin:</span>
                       <div><%= @phone.pin.blank? ? "N/A" : @phone.pin %></div>
                     </li>
                   </ul>

@@ -35,7 +35,11 @@
 
                   <div class="dn-index-star">
                     <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
+                      title="<%= @phones[0].rate_score %>"></p>
+                  </div>
+
+                  <div class="dn-index-sum-review">
+                    <p><%= @phones[0].reviews.count %> Lượt đánh giá</p>
                   </div>
                 </div>
               </div>
@@ -58,7 +62,10 @@
                   </div>
                   <div class="dn-index-star">
                     <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
+                      title="<%= @phones[0].rate_score %>"></p>
+                  </div>
+                  <div class="dn-index-sum-review">
+                    <p><%= @phones[0].reviews.count %> Lượt đánh giá</p>
                   </div>
                 </div>
               </div>
@@ -73,13 +80,18 @@
                 <div class="dn-figcaption">
                   <div class="dn-title">
                     <h3><%= @phones[2].name %></h3>
-                    <span class="comment">
-                      <%= @phones[2].comments.count %>
-                    </span>
+                    <div class="meta">
+                      <span class="comment">
+                        <%= @phones[1].comments.count %>
+                      </span>
+                    </div>
                   </div>
                   <div class="dn-index-star">
                     <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
+                      title="<%= @phones[0].rate_score %>"></p>
+                  </div>
+                  <div class="dn-index-sum-review">
+                    <p><%= @phones[0].reviews.count %> Lượt đánh giá</p>
                   </div>
                 </div>
               </div>
@@ -102,7 +114,10 @@
                   </div>
                   <div class="dn-index-star">
                     <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
-                      title="<%= @phones[0].rate_score %>"</p>
+                      title="<%= @phones[0].rate_score %>"></p>
+                  </div>
+                  <div class="dn-index-sum-review">
+                    <p><%= @phones[0].reviews.count %> Lượt đánh giá</p>
                   </div>
                 </div>
               </div>
@@ -213,46 +228,16 @@
     </div>
     <div class="row hl-favorite">
       <div class="col-xs-12 text-center hl-title">
-        <span>ĐƯỢC ƯA CHUỘNG</span>
+        <span>Smart Phone New</span>
       </div>
       <div class="swiper-container1">
         <div class="swiper-wrapper">
-          <div class="swiper-slide hl-favorite-slide1">
-             <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name1</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name2</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name3</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name4</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name5</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name6</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name7</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name8</span>
-          </div>
-          <div class="swiper-slide hl-favorite-slide1">
-              <a href="#"><img src="/iphone1.png"></a>
-              <span>produc name9</span>
-          </div>
+          <% @new_phones.each do |new_phone| %>
+            <div class="swiper-slide hl-favorite-slide1">
+               <a href="#"><img src="/iphone1.png"></a>
+                <span><%= new_phone.name %></span>
+            </div>
+          <% end %>
         </div>
 
         <div class="swiper-button-next hl-prev1"></div>

@@ -6,7 +6,9 @@
         media: "all","data-turbolinks-track": true %>
       <%= csrf_meta_tags %>
       <%= javascript_include_tag "application",
-        "data-turbolinks-track": true %>
+        "data-turbolinks-track": "reload" %>
+      <meta name="turbolinks-cache-control" content="no-cache">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <div class="dn-front-content">
