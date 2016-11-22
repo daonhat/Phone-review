@@ -71,14 +71,31 @@
       </div>
     </div>
  </div>
-  <div class="field form-group">
-    <div class="images-upload col-lg-6 clearfix">
+
+ <div id="image-upload-input-template" style="display: none;">
+	 <div class="images-upload col-lg-6" >
+		 <label class="col-lg-5 control-label"></label>
+		 <div class="phone-props col-lg-7 clearfix image-input">
+			 <input class="" name="img[]" type="file" >
+		 </div>
+	 </div>
+	<div class="clearfix"></div>
+ </div>
+
+ <div class="field form-group ">
+    <div class="images-upload col-lg-6 ">
       <label class="col-lg-5 control-label">Images: </label>
-      <div class="phone-props col-lg-7">
-        <input id="phone-images-file" name="img[]" type="file" multiple >
+      <div class="phone-props col-lg-7 clearfix image-input">
+        <input class="phone-images-file" name="img[]" type="file">
       </div>
     </div>
-    <div class="add-image-upload col-lg-6 cleafix"><span class="btn btn-default">Add image</span></div>
+	<div  class="clearfix"></div>
+
+	<div id="add-image-input" class="add-image-upload col-lg-6 ">
+		<div class="col-lg-7 pull-right">
+			<span class="btn btn-default">Add image</span>
+		</div>
+	</div>
  </div>
  
  <div id="create-phone-button" class="center-block">
@@ -86,7 +103,7 @@
  </div>
    <script>
  $(document).ready(function(){
-        $("#phone-images-file").fileinput({
+        $("input.phone-images-file").fileinput({
           showUpload: false
         });
         $("#file").on('filebatchuploadcomplete', function(event, files, extra) {
@@ -94,9 +111,21 @@
                 location.reload();
             }
         });
-        $(".add-image-upload").click(function(){
-          var input_div = $("div.images-upload"); 
-        }); 
-    });
+        $(".add-image-upload span").click(function(){
+			var input_div = $("#image-upload-input-template"); 
+			$("#add-image-input").before(input_div.html());
+			$("#add-image-input").prev().prev().find("input").first().fileinput({
+				showUpload: false
+			})
+		});
+ });
    </script>
 <% end %>
+
+
+
+
+
+
+
+
