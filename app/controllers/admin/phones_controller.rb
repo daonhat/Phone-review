@@ -1,6 +1,6 @@
 class Admin::PhonesController < Admin::BaseController
   load_and_authorize_resource
-  @@phone_images_path = "public/phones/"
+  @@phone_images_path = "phones/"
   def index
     @phones = Phone.page params[:page]
   end
@@ -50,25 +50,38 @@ class Admin::PhonesController < Admin::BaseController
   end
 
   def upload_images phone_id, images_params
-      current_time = Time.now.to_i.to_s
-      new_name_folder = current_time
-      image_root = "#{@@phone_images_path}"
-      phone_images_folder_path = image_root + "#{phone_id}" +"/"+ "#{new_name_folder}";
-      
-      images_params.each_with_index do |image_param, index| 
-        file_name = image_param.original_filename  if  (image_param !='')    
-        file = image_param.read    
+		current_time = Time.now.to_i.to_s
+		new_name_folder = current_time
+		image_root = 'public/'+ "#{@@phone_images_path}"
+		phone_images_folder_path = image_root + "#{phone_id}" +"/"+ "#{new_name_folder}";
+		phone_images_folder_url = "#{@@phone_images_path}" +"#{phone_id}" +"/"+ "#{new_name_folder}";
+		images_params.each_with_index do |image_param, index| 
+			file_name = image_param.original_filename  if  (image_param !='')    
+			file = image_param.read    
 
-        file_type = file_name.split('.').last
-        new_file_name_with_type = current_time + file_name + file_type
+			file_type = file_name.split('.').last
+			new_file_name_with_type = current_time + file_name 
 
-        FileUtils.mkdir_p(phone_images_folder_path);
-        File.open(phone_images_folder_path +"/"+ "#{new_file_name_with_type}", "wb")  do |f|  
-          f.write(file) 
-        end 
-      end
-     
+			FileUtils.mkdir_p(phone_images_folder_path);
+			phone_image_path = phone_images_folder_path +"/"+ "#{new_file_name_with_type}" 
+			phone_image_url = phone_images_folder_url + "/" + "#{new_file_name_with_type}" 
+			File.open(phone_images_folder_path +"/"+ "#{new_file_name_with_type}", "wb")  do |f|  
+				f.write(file) 
+			end 
+			# save to db
+			save_image phone_id, phone_image_url 
+		end
   end
 
-
+	def save_image phone_id, phone_image_url
+		Image.create phone_id: phone_id, image_url: phone_image_url
+	end
 end
+
+
+
+
+
+
+
+
