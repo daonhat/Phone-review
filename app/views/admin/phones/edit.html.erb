@@ -79,20 +79,52 @@
 	 </div>
 	<div class="clearfix"></div>
  </div>
-
-<% @phone.images.each do |image| %>
-	<div class="phone-image">
-	 <div class="images-upload col-lg-6" >
-		 <label class="col-lg-5 control-label"></label>
-		 <div class="phone-props col-lg-7 clearfix image-input">
-			 <img src="<%= "/"+image.image_url %>">
+ <label>Images</label>
+ <hr/>
+ <div class="clearfix" style="margin-top: 40px"></div>
+ <div class="phone-images clearfix">
+ <% @phone.images.each do |image| %>
+	 <div class="phone-image col-lg-3">
+		 <div class="images-upload" >
+			 <div class="phone-props image-input">
+				 <img class="img-responsive" src="<%= "/"+image.image_url %>">
+			 </div>
+		 </div>
+		 <div class="delete-button">
+			 <span class="btn btn-danger" data-image-id="<%= image.id %>">Delete</span>
 		 </div>
 	 </div>
-	<div class="clearfix"></div>
- </div>
 
 <% end %>
+</div>
+<script>
+$(document).ready(function(){
+	$(".delete-button").click(function(e){
+		if(confirm('Are you sure to delete this image?')){
+			var div_parent = $(this).closest('.phone-image');
+			image_id = $(this).find('span').attr('data-image-id');
+			$.ajax({
+				url: '/admin/images/'+image_id,
+				type: 'DELETE',
+				data:{
+					'image_id' : image_id
+				},
+				dataType: 'json',
+				success: function(data){
+					if(data.status == 'success'){
+						div_parent.remove();
+					}else if(data.status == 'fail'){
+						alert('Can\'t delete this image');
+					}
+				}
+			})
 
+		}
+	});
+});
+</script>
+<div class="clearfix" style="margin-bottom: 40px"></div>
+<hr/>
  <div class="field form-group ">
     <div class="images-upload col-lg-6 ">
       <label class="col-lg-5 control-label">Images: </label>
