@@ -85,12 +85,12 @@
 	 <div class="images-upload col-lg-6" >
 		 <label class="col-lg-5 control-label"></label>
 		 <div class="phone-props col-lg-7 clearfix image-input">
-			 <img src="<%=  image.image_url%>">
+			 <img src="<%= "/"+image.image_url %>">
 		 </div>
 	 </div>
 	<div class="clearfix"></div>
  </div>
-		
+
 <% end %>
 
  <div class="field form-group ">
@@ -108,7 +108,7 @@
 		</div>
 	</div>
  </div>
- 
+
  <div id="create-phone-button" class="center-block">
   <%= f.submit "Create Phone", class: "btn btn-primary center-block" %>
  </div>
@@ -123,7 +123,7 @@
             }
         });
         $(".add-image-upload span").click(function(){
-			var input_div = $("#image-upload-input-template"); 
+			var input_div = $("#image-upload-input-template");
 			$("#add-image-input").before(input_div.html());
 			$("#add-image-input").prev().prev().find("input").first().fileinput({
 				showUpload: false

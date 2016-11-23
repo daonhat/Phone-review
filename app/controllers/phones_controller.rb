@@ -9,11 +9,12 @@ class PhonesController < ApplicationController
     # order by count(comment.id), phone.id, ASC
     # limit 10
 
-    # @favorite = Phone.includes(:comments).group(:id).order(count(comments.id), :id, asc)
+    @new_phones = Phone.new_phones.limit(10)
 
   end
 
   def show
+    @favorites = Phone.where("category_id = ?", @phone.category_id).limit(3)
     @comment_count = @phone.comments.count
     @comments = @phone.comments.page params[:page]
 		@voted = false

@@ -1,8 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse dn-front-header">
   <div class="container">
-    <%= link_to root_path, id: "logo" do %>
-      <%= image_tag "logo-mnrv" %>
-    <% end %>
+    <a href="/" id="logo">
+      <img src="https://www.service2media.com/wp-content/uploads/2013/12/app-review-logo.jpg" class="img-responsive">
+    </a>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed"
         data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -15,25 +15,14 @@
     </div>
     <nav class="collapse navbar-collapse dropdown" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav login">
-        <li class=""><a href="/">SmartPhone <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Top 10</a></li>
       </ul>
-
-      <%= search_form_for @search, url: searchs_path, html: {class: "navbar-form navbar-left",  style: "margin-top: 12px"} do |f| %>
-        <div class="form-group">
-          <%= f.text_field :name_cont,
-            class: "form-control", placeholder: t(:search_name) %>
-        </div>
-          <%= f.submit t(:search), class: "btn btn-default" %>
-      <% end %>
-
       <ul class="nav navbar-nav navbar-right ">
         <% if user_signed_in? %>
-          <li class="dropdown">
+          <li class="dropdown" style="margin-top: 6px;">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs"><%= current_user.name.blank? ? current_user.email : current_user.name %></span>
+              <span class="hidden-xs"><%= current_user.name.blank? ? current_user.email : current_user.name %><span class="caret"></span></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="margin-top: 2px;">
               <li><%= link_to "Profile",
                 user_path(current_user) %></li>
               <li><%= link_to "Update profile",
@@ -54,6 +43,13 @@
           <li><%= link_to t(:signup), new_user_registration_path, class: "sign-up" %></li>
         <% end %>
       </ul>
+
+      <%= search_form_for @search, url: searchs_path, html: {class: "navbar-form navbar-right dn-search-form"} do |f| %>
+        <div class="form-group">
+          <%= f.text_field :name_cont,
+            class: "form-control", placeholder: "Search" %>
+        </div>
+      <% end %>
     </nav>
   </div>
 </header>

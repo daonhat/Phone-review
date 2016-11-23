@@ -6,6 +6,8 @@ class Phone < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  scope :new_phones, ->{order(created_at: :desc)}
+
 	def self.average_rate_score phone_id
 		phone = Phone.find phone_id
 		sum_reviews = phone.reviews.sum :rate_review
