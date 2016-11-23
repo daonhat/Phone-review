@@ -1,9 +1,23 @@
 <% provide :title, t(:edit_phone) %>
 <%= form_for [:admin, @phone], html: {class: 'form-horizontal center-block create-phone-form', multipart: true} do |f| %>
+
+  <div class="field form-group">
+    <label class="col-lg-3 control-label">Phone category:</label>
+    <div class="phone-props col-lg-7">
+      <%= f.collection_select :category_id, @categories, :id, :name,
+        {}, {class: "edit-form form-control"} %>
+    </div>
+  </diV>
+
   <div class="field form-group">
     <label class="col-lg-3 control-label">Phone title:</label>
     <div class="col-lg-8">
-      <%= f.text_field :name, placeholder: "Phone Title", class: "form-control dn-form-control" %>
+      <% if @phone.errors[:name][0] %>
+        <%= f.text_field :name, autofocus: true, required: true, class: "error form-control dn-form-control"%>
+        <p class="error sign-error"><%= @phone.errors[:name][0].capitalize %></p>
+      <% else %>
+        <%= f.text_field :name, placeholder: "Phone Title", class: "form-control dn-form-control" %>
+      <% end %>
     </div>
   </div>
 
@@ -11,15 +25,17 @@
     <label class="col-lg-3 control-label">Phone description:</label>
     <div class="col-lg-8">
       <%= f.cktext_area :description, id: "ckeditor" %>
+      <% if @phone.errors[:name][0] %>
+        <p class="error sign-error">Description <%= @phone.errors[:name][0] %></p>
+      <% end %>
     </div>
   </diV>
 
   <div class="field form-group">
-    <div class="col-lg-6">
-      <label class="col-lg-5 control-label">Phone category:</label>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">CPU:</label>
       <div class="phone-props col-lg-7">
-        <%= f.collection_select :category_id, @categories, :id, :name,
-          {}, {class: "edit-form form-control"} %>
+        <%= f.text_field :cpu, placeholder: "CPU", class: "form-control" %>
       </div>
     </div>
     <div class="col-lg-6 pull-right">
@@ -68,11 +84,17 @@
         <%= f.text_field :back_camera, placeholder: "Back camera", class: "form-control" %>
       </div>
     </div>
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Front camera:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :front_camera, placeholder: "Back camera", class: "form-control" %>
+      </div>
+    </div>
  </div>
 
  <div id="image-upload-input-template" style="display: none;">
 	 <div class="images-upload col-lg-6" >
-		 <label class="col-lg-5 control-label"></label>
+		 <label class="col-lg-5 control-label">Images: </label>
 		 <div class="phone-props col-lg-7 clearfix image-input">
 			 <input class="" name="img[]" type="file" >
 		 </div>
@@ -142,7 +164,7 @@ $(document).ready(function(){
  </div>
 
  <div id="create-phone-button" class="center-block">
-  <%= f.submit "Create Phone", class: "btn btn-primary center-block" %>
+  <%= f.submit "Update", class: "btn btn-primary center-block" %>
  </div>
    <script>
  $(document).ready(function(){

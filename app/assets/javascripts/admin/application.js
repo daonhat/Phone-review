@@ -17,6 +17,7 @@
 //= require ckeditor/init
 //= require jquery.raty
 //= require adminlte
+//= require swiper.min
 //= require ../fileinput
 //= require_tree .
 

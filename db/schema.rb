@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 20161122141745) do
     t.string   "front_camera"
     t.string   "back_camera"
     t.string   "memory"
-    t.float    "rate_score"
+    t.float    "rate_score",   default: 0.0
     t.string   "cpu"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["category_id"], name: "index_phones_on_category_id"
     t.index ["user_id"], name: "index_phones_on_user_id"
   end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  ratyrate_rater
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,6 +17,10 @@ class User < ApplicationRecord
   validates_attachment :avatar,
     content_type: {content_type: ["image/jpeg", "image/jpg", "image/png", "image/gif"]},
     size: {in: 0..2048.kilobytes}
+  validates :email, presence: true, length: {maximum: 235},
+    format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+  validates :name, length: {maximum: 50}
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
   enum gender: ["male", "female", "trans"]
 

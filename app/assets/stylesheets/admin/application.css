@@ -12,6 +12,7 @@
  *
  *= require adminlte
  *= require skin-blue
+ *= require swiper
  *= require_tree .
  *= require_self
  */

@@ -26,10 +26,12 @@
                   <h2>Phone images </h2>
                   <div class="swiper-container dn-show-slide-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(https://cdn1.tgdd.vn/Products/Images/42/74927/htc-10-bac-1-1.jpg)"></div>
-                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(https://cdn.tgdd.vn/Products/Images/42/74927/htc-10-9-1.jpg)"></div>
-                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://review.mainguyen.vn/img/2014/10/topic/m/Chi-tiet-Lumia830-8.jpg)"></div>
-                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://review.mainguyen.vn/img/2014/10/topic/m/Bia.jpg)"></div>
+                      <% @phone.images.each do |img| %>
+                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(<%= "/" + img.image_url %>)"></div>
+                      <% end %>
+                      <% if @phone.images.empty? %>
+                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://creator.keepcalmandcarryon.com/kcp-frame/sqfsuhFlR)"></div>
+                      <% end %>
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
@@ -70,7 +72,7 @@
                     </li>
                     <li>
                       <span>CPU</span>
-                      <div><%= @phone.pin.blank? ? "N/A" : @phone.pin %></div>
+                      <div><%= @phone.cpu.blank? ? "N/A" : @phone.cpu %></div>
                     </li>
                     <li>
                       <span>RAM:</span>
@@ -94,237 +96,227 @@
     </div>
 
     <div class="dn-ct1-bot">
-        <div class="container">
-            <div>
-                <div class="col-sm-7 dn-ct1-bot-left">
-                    <div class="row dn-ct1-bot-item">
-                      <% if user_signed_in? && !@voted %>
-                        <div class="col-xs-6">
-                          <h3 class="rate-h3 rate-h3-text">Rate here</h3>
-                        </div>
-
-                        <div class="col-xs-5">
-                          <div id="star-1"></div>
-                            <script>
-							//new review ajax
-                            $('#star-1').raty({
-								hints: ['1', '2', '3','4', '5'],
-								click: function(score, evt) {
-									phone_id = '<%= @phone.id%>';
-									user_id = '<%= current_user.id%>';
-									review = {
-										'user_id': user_id,
-										'phone_id': phone_id,
-										'rate_review': score
-									};
-									//for bug: while ajax process has not done, but user change
-									//the score that has been sended in ajax request.
-									//So the really sended score value is different
-									//from showed value.
-									//therefore it must be set readOnly attr
-									//before calling ajax
-									$("#star-1").raty('readOnly', true);
-									$.ajax({
-										url: '/phones/<%= @phone.id%>/reviews',
-										type: 'POST',
-										data: {
-											'review': review
-										},
-										dataType: 'json',
-										success: function(data){
-											$(".rate-h3-text").text("Your rate is: ");
-											$("#avg-score").text(parseFloat(data.average).toFixed(2));
-											$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
-											$("#phone-rate-star-1").raty('set', {'score': parseFloat(data.average).toFixed(2)});
-											$(".phone-rate-star-1-count").text(parseFloat(data.reviews_count).toFixed(0)+' reviews');
-											$(".new-review .edit-review-button").toggleClass("hidden");
-											create_edit_button_for_new_review(data);
-										}
-
-									});
-							  }
-                            });
-							//edit just created rate
-							function create_edit_button_for_new_review(review ){
-
-								$(".new-review .edit-review-button").click(function(){
-									var obj = $(this);
-									obj.toggleClass("hidden");
-									$(".new-review .cancel-review-button").toggleClass("hidden");
-									$("#star-1").raty('readOnly', false);
-									$("#star-1").raty({
-										hints: ['1', '2', '3','4', '5'],
-										click: function(score, evt) {
-											review_id = review.id;
-											review_data_to_send = {
-												'review_id': review_id,
-												'score': score
-											};
-											//for bug: while ajax process has not done, but user change
-											//the score that has been sended in ajax request.
-											//So the really sended score value is different
-											//from showed value.
-											//therefore it must be set readOnly attr
-											//before calling ajax
-											$("#star-1").raty('readOnly', true);
-											$.ajax({
-												url: '/phones/<%= @phone.id%>/reviews/'+ review_id,
-												type: 'PATCH',
-												data: {
-													'review': review_data_to_send
-												},
-												dataType: 'json',
-												success: function(data){
-													obj.toggleClass("hidden");
-													$(".new-review .cancel-review-button").toggleClass("hidden");
-													review_score = score;
-													$("#avg-score").text(parseFloat(data.average).toFixed(2));
-													$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
-													$("#phone-rate-star-1").raty('set', {'score': parseFloat(data.average).toFixed(2)});
-												}
-
-											});
-										}
-									});
-								});
-
-								$(".new-review .cancel-review-button").click(function(){
-									var obj = $(this);
-									obj.toggleClass("hidden");
-									review_score = review.rate_review;
-									$(".new-review .edit-review-button").toggleClass("hidden");
-									$("#star-1").raty('set', {'score': review_score});
-									$("#star-1").raty('readOnly', true);
-								});
-
-
-							}
-
-                            </script>
-                        </div>
-						<div class="col-xs-1 new-review">
-							<div class="pull-left edit-review-button hidden btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"> Edit</span></div>
-							<div class="pull-left cancel-review-button hidden btn-sm btn-success"><span class="glyphicon glyphicon-remove"> Cancel</span></div>
-						</div>
-                      <% elsif user_signed_in? && @voted %>
-                        <div class="col-xs-5">
-                          <h3 class="rate-h3 rate-h3-text">You rated: </h3>
-                        </div>
-                        <div class="col-xs-6">
-                          <div id="star-2"></div>
-                          <script>
-                          $('#star-2').raty({
-                            hints: ['1', '2', '3','4', '5'],
-                            readOnly: true,
-                            score: '<%= @review.rate_review %>',
-                          });
-                          </script>
-                        </div>
-						<div class="col-xs-1 old-review">
-							<div class="pull-left edit-review-button btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"> Edit</span></div>
-							<div class="pull-left cancel-review-button hidden btn-sm btn-success"><span class="glyphicon glyphicon-remove"> Cancel</span></div>
-						</div>
-						<script>
-							review_score = '<%= @review.rate_review%>';
-							$(".old-review .edit-review-button").click(function(){
-								var obj = $(this);
-								obj.toggleClass("hidden");
-								$(".old-review .cancel-review-button").toggleClass("hidden");
-								$("#star-2").raty('readOnly', false);
-								$("#star-2").raty({
-									hints: ['1', '2', '3','4', '5'],
-									click: function(score, evt) {
-										review_id = '<%= @review.id%>';
-										review = {
-											'review_id': review_id,
-											'score': score
-										};
-										//for bug: while ajax process has not done, but user change
-										//the score that has been sended in ajax request.
-										//So the really sended score value is different
-										//from showed value.
-										//therefore it must be set readOnly attr
-										//before calling ajax
-										$("#star-2").raty('readOnly', true);
-										$.ajax({
-											url: '/phones/<%= @phone.id%>/reviews/'+ review_id,
-											type: 'PATCH',
-											data: {
-												'review': review
-											},
-											dataType: 'json',
-											success: function(data){
-												obj.toggleClass("hidden");
-												$(".old-review .cancel-review-button").toggleClass("hidden");
-												review_score = score;
-												$("#avg-score").text(parseFloat(data.average).toFixed(2));
-												$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
-												$("#phone-rate-star-1").raty('set', {'score': parseFloat(data.average).toFixed(2)});
-											}
-
-										});
-									}
-								});
-
-							});
-
-							$(".old-review .cancel-review-button").click(function(){
-								var obj = $(this);
-								obj.toggleClass("hidden");
-								review_rate = '<%= @review.rate_review%>';
-								$(".old-review .edit-review-button").toggleClass("hidden");
-								$("#star-2").raty('set', {'score': review_score});
-								$("#star-2").raty('readOnly', true);
-							});
-
-						</script>
-                      <% end %>
-                    </div>
+      <div class="container">
+        <div>
+          <div class="col-sm-7 dn-ct1-bot-left">
+            <div class="row dn-ct1-bot-item">
+              <% if user_signed_in? && !@voted %>
+                <div class="col-xs-6">
+                  <h3 class="rate-h3 rate-h3-text">Rate here</h3>
                 </div>
-                <div class="col-sm-5 dn-ct1-bot-right">
-                    <div class="dn-bot-right-content text-center">
-                        <h4 class="dn-semiBold">SẢN PHẨM BẠN CÓ THỂ YÊU THÍCH</h4>
-                        <ul>
-                            <li>
-                                <a href="http://bello.mastercus.com/glass/detail/25">
-                                    <img src="" alt="">
-                                    <p class="dn-semiBold">SMITH DOCKSIDE</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://bello.mastercus.com/glass/detail/26">
-                                    <img src="" alt="">
-                                    <p class="dn-semiBold">SMITH COLETTE</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
+                <div class="col-xs-5">
+                  <div id="star-1"></div>
+                  <script>
+						        //new review ajax
+                    $('#star-1').raty({
+        							click: function(score, evt) {
+        								phone_id = '<%= @phone.id%>';
+        								user_id = '<%= current_user.id%>';
+        								review = {
+        									'user_id': user_id,
+        									'phone_id': phone_id,
+        									'rate_review': score
+        						  };
+  									//for bug: while ajax process has not done, but user change
+  									//the score that has been sended in ajax request.
+  									//So the really sended score value is different
+  									//from showed value.
+  									//therefore it must be set readOnly attr
+  									//before calling ajax
+								      $("#star-1").raty('readOnly', true);
+									    $.ajax({
+    										url: '/phones/<%= @phone.id%>/reviews',
+    										type: 'POST',
+    										data: {
+    											'review': review
+    										},
+    										dataType: 'json',
+    										success: function(data){
+    											$(".rate-h3-text").text("Your rate is: ");
+    											$("#avg-score").text(parseFloat(data.average).toFixed(2));
+    											$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
+    											$("#phone-rate-star-1").raty('set', {'score': parseFloat(data.average).toFixed(2)});
+    											$(".phone-rate-star-1-count").text(parseFloat(data.reviews_count).toFixed(0)+' reviews');
+    											$(".new-review .edit-review-button").toggleClass("hidden");
+    											create_edit_button_for_new_review(data);
+    										}
+
+    									  });
+						          }
+                    });
+						        //edit just created rate
+						        function create_edit_button_for_new_review(review ){
+							        $(".new-review .edit-review-button").click(function(){
+								        var obj = $(this);
+								        obj.toggleClass("hidden");
+								        $(".new-review .cancel-review-button").toggleClass("hidden");
+								        $("#star-1").raty('readOnly', false);
+								        $("#star-1").raty({
+									        click: function(score, evt) {
+										        review_id = review.id;
+										        review_data_to_send = {
+											      'review_id': review_id,
+											      'score': score
+										        };
+      											//for bug: while ajax process has not done, but user change
+      											//the score that has been sended in ajax request.
+      											//So the really sended score value is different
+      											//from showed value.
+      											//therefore it must be set readOnly attr
+      											//before calling ajax
+										        $("#star-1").raty('readOnly', true);
+      											$.ajax({
+      												url: '/phones/<%= @phone.id%>/reviews/'+ review_id,
+      												type: 'PATCH',
+      												data: {
+      													'review': review_data_to_send
+      												},
+      												dataType: 'json',
+      												success: function(data){
+      													obj.toggleClass("hidden");
+      													$(".new-review .cancel-review-button").toggleClass("hidden");
+      													review_score = score;
+      													$("#avg-score").text(parseFloat(data.average).toFixed(2));
+      													$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
+      													$("#phone-rate-star-1").raty('set', {'score': parseFloat(data.average).toFixed(2)});
+      												}
+      											});
+      										 }
+								        });
+							        });
+
+      								$(".new-review .cancel-review-button").click(function(){
+      									var obj = $(this);
+      									obj.toggleClass("hidden");
+      									review_score = review.rate_review;
+      									$(".new-review .edit-review-button").toggleClass("hidden");
+      									$("#star-1").raty('set', {'score': review_score});
+      									$("#star-1").raty('readOnly', true);
+      								});
+						        }
+                  </script>
                 </div>
-                <div class="col-sm-7 dn-phone-last">
-                  <div class="dn-count-cmt">
-                    <h4 class="dn-count"><b><%= @comment_count %> binh luan</b></h4>
+
+    						<div class="col-xs-1 new-review">
+    							<div class="pull-left edit-review-button hidden btn-sm btn-warning">
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                   </div>
-                  <% unless @phone.comments.nil? %>
-                    <div id="comments-of-phone-<%= @phone.id %>">
-                      <%= render @comments %>
-                      <%= paginate @comments, theme: "twitter-bootstrap-3" %>
-                    </div>
-                  <% end %>
-
-
-                  <% if user_signed_in? %>
-                    <div class="col-md-12 dn-cmt-form">
-                      <%= render "shared/comment_form", phone: @phone %>
-                    </div>
-                  <% end %>
+    							<div class="pull-left cancel-review-button hidden btn-sm btn-success">
+                    <span class="glyphicon glyphicon-remove"> Cancel</span>
+                  </div>
+    						</div>
+              <% elsif user_signed_in? && @voted %>
+                <div class="col-xs-5">
+                  <h3 class="rate-h3 rate-h3-text">You rated: </h3>
                 </div>
+
+                <div class="col-xs-6">
+                  <div id="star-2"></div>
+                  <script>
+                  $('#star-2').raty({
+                    readOnly: true,
+                    score: '<%= @review.rate_review %>',
+                  });
+                  </script>
+                </div>
+
+      					<div class="col-xs-1 old-review">
+      						<div class="pull-left edit-review-button btn-sm btn-warning">
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
+                  </div>
+      						<div class="pull-left cancel-review-button hidden btn-sm btn-success">
+                    <span class="glyphicon glyphicon-remove"> Cancel</span>
+                  </div>
+      					</div>
+
+    						<script>
+    							review_score = '<%= @review.rate_review%>';
+    							$(".old-review .edit-review-button").click(function(){
+    								var obj = $(this);
+    								obj.toggleClass("hidden");
+    								$(".old-review .cancel-review-button").toggleClass("hidden");
+    								$("#star-2").raty('readOnly', false);
+    								$("#star-2").raty({
+    									click: function(score, evt) {
+    										review_id = '<%= @review.id%>';
+    										review = {
+    											'review_id': review_id,
+    											'score': score
+    										};
+    										//for bug: while ajax process has not done, but user change
+    										//the score that has been sended in ajax request.
+    										//So the really sended score value is different
+    										//from showed value.
+    										//therefore it must be set readOnly attr
+    										//before calling ajax
+    										$("#star-2").raty('readOnly', true);
+    										$.ajax({
+    											url: '/phones/<%= @phone.id%>/reviews/'+ review_id,
+    											type: 'PATCH',
+    											data: {
+    												'review': review
+    											},
+    											dataType: 'json',
+    											success: function(data){
+    												obj.toggleClass("hidden");
+    												$(".old-review .cancel-review-button").toggleClass("hidden");
+    												review_score = score;
+    												$("#avg-score").text(parseFloat(data.average).toFixed(2));
+    												$("#reviews-count").text(parseFloat(data.reviews_count).toFixed(0));
+    												$("#phone-rate-star-1").raty('set', {'score': parseFloat(data.average).toFixed(2)});
+    											}
+    										});
+    									}
+    								});
+    							});
+
+    							$(".old-review .cancel-review-button").click(function(){
+    								var obj = $(this);
+    								obj.toggleClass("hidden");
+    								review_rate = '<%= @review.rate_review%>';
+    								$(".old-review .edit-review-button").toggleClass("hidden");
+    								$("#star-2").raty('set', {'score': review_score});
+    								$("#star-2").raty('readOnly', true);
+    							});
+    						</script>
+              <% end %>
             </div>
-        </div>
+          </div>
+          <div class="col-sm-5 dn-ct1-bot-right">
+            <div class="dn-bot-right-content text-center">
+              <h4 class="dn-semiBold">MORE SMARTPHONE YOU MAY LIKE</h4>
+              <ul>
+                <% @favorites.each do |favorite| %>
+                  <li>
+                    <a href="/phones/<%= favorite.id %>">
+                      <img src="<%= url_images_index favorite %>" alt="">
+                      <p class="dn-semiBold"><%= favorite.name.upcase %></p>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-7 dn-phone-last">
+            <div class="dn-count-cmt">
+              <h4 class="dn-count"><b><%= @comment_count %> binh luan</b></h4>
+            </div>
+            <% unless @phone.comments.nil? %>
+              <div id="comments-of-phone-<%= @phone.id %>">
+                <%= render @comments %>
+                <%= paginate @comments, theme: "twitter-bootstrap-3" %>
+              </div>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <div class="col-md-12 dn-cmt-form">
+                <%= render "shared/comment_form", phone: @phone %>
+              </div>
+            <% end %>
+          </div>
+      </div>
     </div>
+  </div>
 </section>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-
-	});
-</script>

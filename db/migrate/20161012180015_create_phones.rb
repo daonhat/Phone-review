@@ -10,7 +10,7 @@ class CreatePhones < ActiveRecord::Migration[5.0]
       t.string :front_camera
       t.string :back_camera
       t.string :memory
-			t.float :rate_score
+			t.float :rate_score, default: 0.0
 			t.string :cpu
       t.references :user, foreign_key: true
       t.references :category, foreign_key: true
