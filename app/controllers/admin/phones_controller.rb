@@ -30,6 +30,7 @@ class Admin::PhonesController < Admin::BaseController
 
   def update
     if @phone.update_attributes phone_params
+      upload_images @phone.id, params[:img]
       flash[:success] = t :update_success
       redirect_to admin_phone_path @phone
     else
