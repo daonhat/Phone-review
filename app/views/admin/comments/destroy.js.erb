@@ -1,0 +1,2 @@
+$('#comments-of-phone-<%= @phone.id %>').html("<%= j render @phone.comments, phone: @phone, comment: @comment %>");
+$('.dn-count b').text("<%= @phone.comments.count %> binh luan");

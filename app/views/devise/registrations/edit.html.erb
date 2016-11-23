@@ -73,7 +73,12 @@
         <div class="form-group clearfix">
           <label class="col-lg-3 control-label">Current password</label>
           <div class="col-lg-8">
-            <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+            <% if @user.errors[:current_password][0] %>
+              <%= f.password_field :current_password, autofocus: true, class: "form-control error", required: true%>
+              <p class="error sign-error"><%= @user.errors[:current_password][0].capitalize %></p>
+            <% else %>
+              <%= f.password_field :current_password, autocomplete: "off", class: "form-control", required: true %>
+            <% end %>
           </div>
         </div>
 

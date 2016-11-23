@@ -3,12 +3,7 @@ class PhonesController < ApplicationController
 
   def index
     @phones = Phone.page(params[:page]).per 4
-    # select phone.*
-    # from phone inner join comment on phone.id = comment.phone_id
-    # group by phone.id
-    # order by count(comment.id), phone.id, ASC
-    # limit 10
-
+    @top_phones = Phone.top_phones.order(created_at: :desc).limit(7)
     @new_phones = Phone.new_phones.limit(10)
 
   end

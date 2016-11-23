@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :phones
 		resources :images
+    resources :comments
   end
 end

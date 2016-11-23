@@ -8,26 +8,39 @@
               <h1>Create an account</h1>
           </div>
 
-          <div class="form-row">
-              <label>
+          <div class="form-row ">
+              <label class="">
                   <span>Email</span>
-                  <%= f.email_field :email, autofocus: true %>
+                  <% if @user.errors[:email][0] %>
+                    <%= f.email_field :email, autofocus: true, class: "error", required: true%>
+                    <p class="error sign-error"><%= @user.errors[:email][0].capitalize %></p>
+                  <% else %>
+                    <%= f.email_field :email, autofocus: true, required: true %>
+                  <% end %>
               </label>
-              <p><%= @user.errors[:email][0].capitalize if @user.errors[:email][0] %></p>
           </div>
 
           <div class="form-row">
               <label>
                   <span>Password</span>
-                  <%= f.password_field :password, autocomplete: "off" %>
+                  <% if @user.errors[:password][0] %>
+                    <%= f.password_field :password, autocomplete: "off", class: "error", required: true %>
+                    <p class="error sign-error"><%= @user.errors[:password][0].capitalize %></p>
+                  <% else %>
+                    <%= f.password_field :password, autocomplete: "off", required: true %>
+                  <% end %>
               </label>
-              <p><%= @user.errors[:password][0].capitalize if @user.errors[:password][0] %></p>
           </div>
 
           <div class="form-row">
               <label>
                   <span>Password confirmation</span>
-                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                  <% if @user.errors[:password_confirmation][0] %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", class: "error", required: true %>
+                    <p class="error sign-error"><%= @user.errors[:password_confirmation][0].capitalize %></p>
+                  <% else %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+                  <% end %>
               </label>
           </div>
 
@@ -48,8 +61,8 @@
       </div>
 
       <!-- <a href="#" class="form-google-button">Google</a> -->
-      <a href="#" class="form-facebook-button">Facebook</a>
-      <!-- <a href="#" class="form-twitter-button">Twitter</a> -->
+      <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "form-facebook-button" %>
+      <%= link_to "Twitter", user_twitter_omniauth_authorize_path, class: "form-twitter-button" %>
 
   </div>
 <% end %>

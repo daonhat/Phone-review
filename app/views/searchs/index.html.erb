@@ -8,85 +8,117 @@
     <div class="row">
       <div class="col-md-9">
         <section class="dn-review-cates">
-        <% if @phones[0].present? %>
-          <section class="dn-review-item dn-type-2">
-            <a href="phones/<%= @phones[0].id %>">
-              <div>
-                <img src="index-1.JPG">
-                <div class="dn-figcaption">
-                  <div class="dn-title">
-                    <h3><%= @phones[0].name %></h3>
-                    <div class="meta">
-                      <span class="comment">
-                        <%= @phones[0].comments.count %>
-                      </span>
+          <% if @phones[0].present? %>
+            <section class="dn-review-item dn-type-2">
+              <a href="phones/<%= @phones[0].id %>">
+                <div class="dn-index-img">
+                  <img class="dn-index-list-img" src="<%=  url_images_index(@phones[0]) %>">
+                  <div class="dn-figcaption">
+                    <div class="dn-title">
+                      <h3><%= @phones[0].name %></h3>
+                      <div class="meta">
+                        <span class="comment">
+                          <%= @phones[0].comments.count %>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="dn-index-star">
+                      <p class="phone-star" data-rate-score="<%= @phones[0].rate_score %>"
+                        title="<%= @phones[0].rate_score %>"></p>
+                    </div>
+
+                    <div class="dn-index-sum-review">
+                      <p><%= @phones[0].rate_score.round(1) %> / <%= @phones[0].reviews.count %> Lượt đánh giá</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </section>
-        <% end %>
-        <% if @phones[1].present? %>
-          <section class="dn-review-item dn-type-3">
-            <a href="phones/<%= @phones[1].id %>">
-              <div>
-                <img src="index-2.jpg">
-                <div class="dn-figcaption">
-                  <div class="dn-title">
-                    <h3><%= @phones[1].name %></h3>
-                    <div class="meta">
-                      <span class="comment">
-                        <%= @phones[1].comments.count %>
-                      </span>
+              </a>
+            </section>
+          <% end %>
+          <% if @phones[1].present? %>
+            <section class="dn-review-item dn-type-3">
+              <a href="phones/<%= @phones[1].id %>">
+                <div class="dn-index-img">
+                  <img class="dn-index-list-img" src="<%=  url_images_index(@phones[1]) %>">
+                  <div class="dn-figcaption">
+                    <div class="dn-title">
+                      <h3><%= @phones[1].name %></h3>
+                      <div class="meta">
+                        <span class="comment">
+                          <%= @phones[1].comments.count %>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="dn-index-star">
+                      <p class="phone-star" data-rate-score="<%= @phones[1].rate_score %>"
+                        title="<%= @phones[1].rate_score %>"></p>
+                    </div>
+                    <div class="dn-index-sum-review">
+                      <p><%= @phones[1].rate_score.round(1) %> / <%= @phones[1].reviews.count %> Lượt đánh giá</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </section>
-        <% end %>
-        <% if @phones[2].present? %>
-          <section class="dn-review-item dn-type-3">
-            <a href="phones/<%= @phones[2].id %>">
-              <div>
-                <img src="index-3.jpg">
-                <div class="dn-figcaption">
-                  <div class="dn-title">
-                    <h3><%= @phones[2].name %></h3>
-                    <span class="comment">
-                      <%= @phones[2].comments.count %>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </section>
-        <% end %>
-        <% if @phones[3].present? %>
-          <section class="dn-review-item dn-type-1">
-            <a href="phones/<%= @phones[3].id %>">
-              <div>
-                <img src="index-4.jpg">
-                <div class="dn-figcaption">
-                  <div class="dn-title">
-                    <h3><%= @phones[3].name %></h3>
-                    <div class="meta">
-                      <span class="comment">
-                        <%= @phones[3].comments.count %>
-                      </span>
+              </a>
+            </section>
+          <% end %>
+          <% if @phones[2].present? %>
+            <section class="dn-review-item dn-type-3">
+              <a href="phones/<%= @phones[2].id %>">
+                <div class="dn-index-img">
+                  <img class="dn-index-list-img" src="<%=  url_images_index(@phones[2]) %>">
+                  <div class="dn-figcaption">
+                    <div class="dn-title">
+                      <h3><%= @phones[2].name %></h3>
+                      <div class="meta">
+                        <span class="comment">
+                          <%= @phones[2].comments.count %>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="dn-index-star">
+                      <p class="phone-star" data-rate-score="<%= @phones[2].rate_score %>"
+                        title="<%= @phones[2].rate_score %>"></p>
+                    </div>
+                    <div class="dn-index-sum-review">
+                      <p><%= @phones[2].rate_score.round(1) %> / <%= @phones[2].reviews.count %> Lượt đánh giá</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </section>
-        <% end %>
+              </a>
+            </section>
+          <% end %>
+          <% if @phones[3].present? %>
+            <section class="dn-review-item dn-type-1">
+              <a href="phones/<%= @phones[3].id %>">
+                <div class="dn-index-img">
+                  <img class="dn-index-list-img" src="<%= url_images_index(@phones[3]) %>">
+                  <div class="dn-figcaption">
+                    <div class="dn-title">
+                      <h3><%= @phones[3].name %></h3>
+                      <div class="meta">
+                        <span class="comment">
+                          <%= @phones[3].comments.count %>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="dn-index-star">
+                      <p class="phone-star" data-rate-score="<%= @phones[3].rate_score %>"
+                        title="<%= @phones[3].rate_score %>"></p>
+                    </div>
+                    <div class="dn-index-sum-review">
+                      <p><%= @phones[3].rate_score.round(1) %> / <%= @phones[3].reviews.count %> Lượt đánh giá</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </section>
+          <% end %>
           <div class="clearfix"></div>
         </section>
-        <div class="pagination">
 
-        </div>
+        <div class="dn-pagination"><%= paginate @phones %></div>
+
       </div>
       <div class="col-md-3">
         <div class="dn-top-title">
@@ -94,95 +126,36 @@
         </div>
         <div class="dn-top-content">
           <ul>
+          <% @top_phones.each do |top_phone| %>
             <li>
               <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
+                <a href="/phones/<%= top_phone.id %>">
+                  <img src="<%= url_images_index top_phone %>">
                 </a>
               </div>
               <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
+                <div style="width: 139px;">
+                  <span class="dn-top-content-phone"><%= top_phone.name %></span>
+                </div>
+                <p class="phone-star" data-rate-score="<%= top_phone.rate_score %>"
+                  title="<%= top_phone.rate_score %>"></p>
               </div>
               <div class="clearfix"></div>
             </li>
-            <li>
-              <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
-                </a>
-              </div>
-              <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
-                </a>
-              </div>
-              <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
-                </a>
-              </div>
-              <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
-                </a>
-              </div>
-              <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
-                </a>
-              </div>
-              <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="dn-top-content-a">
-                <a href="#">
-                  <img src="iphone1.png">
-                </a>
-              </div>
-              <div class="dn-top-content-name">
-                <p class="dn-top-content-phone">Iphone 4</p>
-                <p class="star">5 sao</p>
-              </div>
-              <div class="clearfix"></div>
-            </li>
+            <% end %>
           </ul>
         </div>
       </div>
-
-      <div class="col-md-9 dn-pagination"><%= paginate @phones %></div>
     </div>
   </div>
 </div>
+
+<script>
+$('p.phone-star').raty({
+  score: function(){
+    return $(this).attr('data-rate-score');
+  },
+  readOnly: true
+
+});
+</script>
