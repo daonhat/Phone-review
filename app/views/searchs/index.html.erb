@@ -1,6 +1,9 @@
 <div class="container-fluid content">
   <div class="container">
     <div class="row">
+      <%= render "search_form" %>
+    </div>
+    <div class="row">
       <div class="col-md-9">
       <h1><%= @sum %> results</h1>
       </div>
@@ -151,11 +154,11 @@
 </div>
 
 <script>
-$('p.phone-star').raty({
-  score: function(){
-    return $(this).attr('data-rate-score');
-  },
-  readOnly: true
+  $('p.phone-star').raty({
+    score: function(){
+      return $(this).attr('data-rate-score');
+    },
+    readOnly: true
 
-});
+  });
 </script>

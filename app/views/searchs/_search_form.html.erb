@@ -1,0 +1,64 @@
+<h2>Search Advance</h2>
+<%= search_form_for @search, url: searchs_path do |f| %>
+
+  <div class="field col-md-4">
+    <%= f.label :category %>
+    <%= f.select :category_id_eq,
+      options_from_collection_for_select(Category.all, :id, :name,
+      @search.category_id_eq),
+      {include_blank: t("all")},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :screen %>
+    <%= f.text_field :screen_cont,
+      class: "form-control", placeholder: "Fill Screen" %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :OS %>
+    <%= f.text_field :os_cont,
+      class: "form-control", placeholder: "Fill OS " %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :Front_camera %>
+    <%= f.text_field :front_camera_cont,
+      class: "form-control", placeholder: "Fill front camera " %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :Back_camera %>
+    <%= f.text_field :back_camera_cont,
+      class: "form-control", placeholder: "Fill back camera " %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :Cpu %>
+    <%= f.text_field :cpu_cont,
+      class: "form-control", placeholder: "Fill cpu " %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :Ram %>
+    <%= f.text_field :ram_cont,
+      class: "form-control", placeholder: "Fill RAM " %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :memory %>
+    <%= f.text_field :memory_cont,
+      class: "form-control", placeholder: "Fill memory " %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :pin %>
+    <%= f.text_field :pin_cont,
+      class: "form-control", placeholder: "Fill cpu " %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t(:search), class: "btn" %>
+  </div>
+<% end %>
