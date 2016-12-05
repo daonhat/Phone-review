@@ -9,7 +9,7 @@
         <section class="dn-review-cates">
           <% if @phones[0].present? %>
             <section class="dn-review-item dn-type-2">
-              <a href="phones/<%= @phones[0].id %>">
+              <a href="http://localhost:3000/phones/<%= @phones[0].id %>">
                 <div class="dn-index-img">
                   <img class="dn-index-list-img" src="<%=  url_images_index(@phones[0]) %>">
                   <div class="dn-figcaption">
@@ -37,7 +37,7 @@
           <% end %>
           <% if @phones[1].present? %>
             <section class="dn-review-item dn-type-3">
-              <a href="phones/<%= @phones[1].id %>">
+              <a href="http://localhost:3000/phones/<%= @phones[1].id %>">
                 <div class="dn-index-img">
                   <img class="dn-index-list-img" src="<%=  url_images_index(@phones[1]) %>">
                   <div class="dn-figcaption">
@@ -63,7 +63,7 @@
           <% end %>
           <% if @phones[2].present? %>
             <section class="dn-review-item dn-type-3">
-              <a href="phones/<%= @phones[2].id %>">
+              <a href="http://localhost:3000/phones/<%= @phones[2].id %>">
                 <div class="dn-index-img">
                   <img class="dn-index-list-img" src="<%=  url_images_index(@phones[2]) %>">
                   <div class="dn-figcaption">
@@ -89,7 +89,7 @@
           <% end %>
           <% if @phones[3].present? %>
             <section class="dn-review-item dn-type-1">
-              <a href="phones/<%= @phones[3].id %>">
+              <a href="http://localhost:3000/phones/<%= @phones[3].id %>">
                 <div class="dn-index-img">
                   <img class="dn-index-list-img" src="<%= url_images_index(@phones[3]) %>">
                   <div class="dn-figcaption">
@@ -150,11 +150,11 @@
 </div>
 
 <script>
-$('p.phone-star').raty({
-  score: function(){
-    return $(this).attr('data-rate-score');
-  },
-  readOnly: true
+  $('p.phone-star').raty({
+    score: function(){
+      return $(this).attr('data-rate-score');
+    },
+    readOnly: true
 
-});
+  });
 </script>
