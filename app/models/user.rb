@@ -24,6 +24,9 @@ class User < ApplicationRecord
 
   enum gender: ["male", "female", "trans"]
 
+  scope :created_between, ->start_date, end_date{where("DATE(created_at) >=
+    ? AND DATE(created_at) <= ?", start_date, end_date)}
+
 
   class << self
     def from_omniauth auth
