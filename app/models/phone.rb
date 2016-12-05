@@ -9,7 +9,7 @@ class Phone < ApplicationRecord
   validates :name, presence: true, length: {maximum: 50}
   validates :description, presence: true
 
-  scope :new_phones, ->{order(created_at: :asc)}
+  scope :new_phones, ->{order(created_at: :desc)}
   scope :top_phones, ->{order(rate_score: :desc)}
 
 

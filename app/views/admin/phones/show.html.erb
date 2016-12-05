@@ -32,7 +32,10 @@
                   <div class="swiper-container dn-show-slide-container">
                     <div class="swiper-wrapper">
                       <% @phone.images.each do |img| %>
-                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(<%= "/" + img.image_url %>)"></div>
+                        <div class="swiper-slide dn-phone-show-slide" 
+                        style="background-image:url(<%= "/" + img.image_url %>);background-size: 100%;background-repeat: no-repeat;">
+                          
+                        </div>
                       <% end %>
                       <% if @phone.images.empty? %>
                         <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://creator.keepcalmandcarryon.com/kcp-frame/sqfsuhFlR)"></div>

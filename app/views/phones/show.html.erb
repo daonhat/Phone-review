@@ -27,7 +27,10 @@
                   <div class="swiper-container dn-show-slide-container">
                     <div class="swiper-wrapper">
                       <% @phone.images.each do |img| %>
-                        <div class="swiper-slide dn-phone-show-slide" style="background-image:url(<%= "/" + img.image_url %>)"></div>
+                        <div class="swiper-slide dn-phone-show-slide" 
+                        style="background-image:url(<%= "/" + img.image_url %>);background-size: 100%;background-repeat: no-repeat;">
+                          
+                        </div>
                       <% end %>
                       <% if @phone.images.empty? %>
                         <div class="swiper-slide dn-phone-show-slide" style="background-image:url(http://creator.keepcalmandcarryon.com/kcp-frame/sqfsuhFlR)"></div>
@@ -96,7 +99,7 @@
     </div>
 
     <div class="dn-ct1-bot">
-      <div class="container">
+      <div class="container ">
         <div>
           <div class="col-sm-7 dn-ct1-bot-left">
             <div class="row dn-ct1-bot-item">
@@ -282,6 +285,23 @@
     						</script>
               <% end %>
             </div>
+            <div class="col-sm-12 dn-phone-last">
+            <div class="dn-count-cmt">
+              <h4 class="dn-count"><b><%= @comment_count %> binh luan</b></h4>
+            </div>
+            <% unless @phone.comments.nil? %>
+              <div id="comments-of-phone-<%= @phone.id %>">
+                <%= render @comments %>
+                <%= paginate @comments, theme: "twitter-bootstrap-3" %>
+              </div>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <div class="col-md-12 dn-cmt-form">
+                <%= render "shared/comment_form", phone: @phone %>
+              </div>
+            <% end %>
+          </div>
           </div>
           <div class="col-sm-5 dn-ct1-bot-right">
             <div class="dn-bot-right-content text-center">
@@ -299,23 +319,7 @@
             </div>
           </div>
 
-          <div class="col-sm-7 dn-phone-last">
-            <div class="dn-count-cmt">
-              <h4 class="dn-count"><b><%= @comment_count %> binh luan</b></h4>
-            </div>
-            <% unless @phone.comments.nil? %>
-              <div id="comments-of-phone-<%= @phone.id %>">
-                <%= render @comments %>
-                <%= paginate @comments, theme: "twitter-bootstrap-3" %>
-              </div>
-            <% end %>
-
-            <% if user_signed_in? %>
-              <div class="col-md-12 dn-cmt-form">
-                <%= render "shared/comment_form", phone: @phone %>
-              </div>
-            <% end %>
-          </div>
+          
       </div>
     </div>
   </div>

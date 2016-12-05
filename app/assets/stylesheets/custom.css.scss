@@ -278,6 +278,8 @@ body{
     display: block;
     box-sizing: border-box;
     padding: 15%;
+    width: 100%;
+    height: 90%;
 }
 .hl-favorite-slide1 img{
     width: 100%;
@@ -287,14 +289,6 @@ body{
     text-align: center;
 }
 
-.hl-favorite-slide1 {
-  position: relative;
-  span{
-    position: absolute;
-    bottom: 0;
-    left: 20%;
-  }
-}
 
 .dn-page-header{
   padding-bottom: 9px;
@@ -566,7 +560,7 @@ body{
 
 .dn-search-form{
   margin-top: 13px;
-  margin-right: 28%!important;
+  margin-right: 20%!important;
 }
 
 .dn-search-form .form-group input{
@@ -607,7 +601,7 @@ body{
   }
 
   .dn-search-form {
-    margin-right: 15% !important;
+    margin-right: 5% !important;
   }
 }
 

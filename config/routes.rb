@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :users, only: [:show, :edit, :update]
+  
+  resources :categories
 
   namespace :admin do
     root "dashboard#index", as: :root
