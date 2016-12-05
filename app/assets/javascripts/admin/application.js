@@ -19,6 +19,7 @@
 //= require adminlte
 //= require swiper.min
 //= require ../fileinput
+//= require highcharts
 //= require_tree .
 
 $(document).on('ready', function() {
