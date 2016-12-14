@@ -5,7 +5,7 @@ function chart_1(){
           type: 'column'
       },
       title: {
-          text: 'World\'s largest cities per 2014'
+          text: 'Registered user per day'
       },
       subtitle: {
           text: 'The first team'
@@ -30,7 +30,7 @@ function chart_1(){
           enabled: false
       },
       tooltip: {
-          pointFormat: 'Population in 2008: <b>{point.y:.1f} millions</b>'
+          pointFormat: 'Registered user: <b>{point.y:.1f} people</b>'
       },
       series: [{
           name: 'Population',
