@@ -36,8 +36,8 @@ Rails.application.configure do
       :port => 587,
       :domain => 'localhost',
       :authentication => 'plain',
-      :user_name => 'daonhat123@gmail.com',
-      :password => 'anhlanhat',
+      :user_name => '',
+      :password => '',
       :enable_starttls_auto => true
   }
   config.action_mailer.default_url_options ={host: "localhost", port: 3000}
