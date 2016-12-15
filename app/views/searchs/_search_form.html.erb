@@ -2,11 +2,25 @@
 <%= search_form_for @search, url: searchs_path do |f| %>
 
   <div class="field col-md-4">
-    <%= f.label :category %>
+    <%= f.label :Category %>
     <%= f.select :category_id_eq,
       options_from_collection_for_select(Category.all, :id, :name,
       @search.category_id_eq),
       {include_blank: t("all")},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :Ram %>
+    <%= f.select :ram_cont, [["2GB"], ["3GB"], ["4GB"], ["8GB"]],
+      {include_blank: "All", selected: params[:q] ? params[:q].try(:[], :ram_cont) : ""},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= f.label :memory %>
+    <%= f.select :memory_cont, [["8GB"], ["16GB"], ["32GB"], ["64GB"], ["128GB"]],
+      {include_blank: "All", selected: params[:q] ? params[:q].try(:[], :memory_cont) : ""},
       {class: "form-control"} %>
   </div>
 
@@ -41,24 +55,12 @@
   </div>
 
   <div class="field col-md-4">
-    <%= f.label :Ram %>
-    <%= f.text_field :ram_cont,
-      class: "form-control", placeholder: "Fill RAM " %>
-  </div>
-
-  <div class="field col-md-4">
-    <%= f.label :memory %>
-    <%= f.text_field :memory_cont,
-      class: "form-control", placeholder: "Fill memory " %>
-  </div>
-
-  <div class="field col-md-4">
     <%= f.label :pin %>
     <%= f.text_field :pin_cont,
       class: "form-control", placeholder: "Fill cpu " %>
   </div>
 
   <div class="actions">
-    <%= f.submit t(:search), class: "btn" %>
+    <%= f.submit t(:search), class: "btn btn-info dn-btn-search-btn" %>
   </div>
 <% end %>
