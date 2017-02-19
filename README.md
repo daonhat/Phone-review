@@ -1,24 +1,34 @@
-# README
+# ABOUT PROJECT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project for Website development subject at 9th sememter in HEDSPI project at HUST VietNam. It's a simple smartphone review
+* User can
++ Authentication, update profile.
++ See all smartphone in website
++ Search by many condition
++ See top smartphone
++ Review smarthphone by star, max is 5 star and min is 1*
++ Comment in detail smartphone
 
-Things you may want to cover:
+Website is deployed at:
 
-* Ruby version
+Account user:
+password user:
+Account admin: admin@gmail.com
+password admin: 123456
 
-* System dependencies
+* Admin can
++ Follow system with 2 chart: User per day and Phone of category
++ Manage User in system (delete , update and create new user with password is email)
++ Manage category: CRUD category
++ Manage smartphone: CRUD smartphone, when create new smartphone admin using editor
 
-* Configuration
+# MEMBER
+* HEDSPI K57 students of HUST VietNam. Leaded and managed by daonhat (email:daonhat@gmail.com)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# USING DEVELOPMENT VERSION
+* Install Ruby 2.3.1
+* Install Rails 5.0.0.1
+* Download source code and run
++ bundle install
++ rake db:migrate
++ rake db:seed

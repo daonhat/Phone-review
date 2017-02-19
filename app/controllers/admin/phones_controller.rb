@@ -19,9 +19,12 @@ class Admin::PhonesController < Admin::BaseController
     if @phone.save
       upload_images @phone.id, params[:img] if params[:img].present?
       @users = User.all
-      @users.each do |user|
-        MailNewPhoneJob.perform_now(user)
-      end
+      # @users.each do |user|
+      user = User.find 5
+        # MailNewPhoneJob.perform_now(user)
+        #byebug
+        PhoneMailer.new_phone(user).deliver_now!
+      # end
       flash[:success] = t "phone_created"
       redirect_to admin_phone_path @phone
     else
