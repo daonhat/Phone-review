@@ -25,7 +25,7 @@ Website is deployed at: https://smartphonereview-dn-hedspi.herokuapp.com
 # MEMBER
 * HEDSPI K57 students of HUST VietNam. Leaded and managed by daonhat (email:daonhat@gmail.com)
 
-# USING DEVELOPMENT VERSION
+# INSTALL PROJECT
 * Install Ruby 2.3.1
 * Install Rails 5.0.0.1
 * Download source code and run
