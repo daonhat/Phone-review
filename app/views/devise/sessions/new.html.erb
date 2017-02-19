@@ -1,0 +1,54 @@
+<%= form_for resource, as: resource_name,
+  url: session_path(resource_name), html: {class: "form-login"} do |f| %>
+
+    <div class="form-log-in-with-email">
+
+      <div class="form-white-background">
+
+        <div class="form-title-row">
+          <h1>Log in</h1>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>Email</span>
+            <%= f.email_field :email, autofocus: true, required: true %>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            <span>Password</span>
+              <%= f.password_field :password, autocomplete: "off", required: true %>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label class="form-checkbox">
+            <%= f.check_box :remember_me %>
+            <span class="remember"><b>Remember me</span>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <button type="submit">Log in</button>
+        </div>
+
+      </div>
+
+        <%= link_to "Create an account", new_registration_path(resource_name),
+          class: "form-create-an-account" %>
+
+    </div>
+
+    <div class="form-sign-in-with-social">
+
+      <div class="form-row form-title-row">
+        <span class="form-title">Sign in with</span>
+      </div>
+      <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "form-facebook-button" %>
+      <%#= link_to "Twitter", user_twitter_omniauth_authorize_path, class: "form-twitter-button" %>
+
+    </div>
+
+<% end %>
+

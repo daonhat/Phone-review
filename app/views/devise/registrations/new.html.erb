@@ -1,0 +1,68 @@
+<%= form_for resource, as: resource_name,
+  url: registration_path(@user), html: {class: "form-register" } do |f| %>
+
+  <div class="form-register-with-email">
+      <div class="form-white-background">
+
+          <div class="form-title-row">
+              <h1>Create an account</h1>
+          </div>
+
+          <div class="form-row ">
+              <label class="">
+                  <span>Email</span>
+                  <% if @user.errors[:email][0] %>
+                    <%= f.email_field :email, autofocus: true, class: "error", required: true%>
+                    <p class="error sign-error"><%= @user.errors[:email][0].capitalize %></p>
+                  <% else %>
+                    <%= f.email_field :email, autofocus: true, required: true %>
+                  <% end %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Password</span>
+                  <% if @user.errors[:password][0] %>
+                    <%= f.password_field :password, autocomplete: "off", class: "error", required: true %>
+                    <p class="error sign-error"><%= @user.errors[:password][0].capitalize %></p>
+                  <% else %>
+                    <%= f.password_field :password, autocomplete: "off", required: true %>
+                  <% end %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Password confirmation</span>
+                  <% if @user.errors[:password_confirmation][0] %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", class: "error", required: true %>
+                    <p class="error sign-error"><%= @user.errors[:password_confirmation][0].capitalize %></p>
+                  <% else %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+                  <% end %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <button type="submit">Register</button>
+          </div>
+
+      </div>
+
+      <a href="sign_in" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+
+  </div>
+
+  <div class="form-sign-in-with-social">
+
+      <div class="form-row form-title-row">
+          <span class="form-title">Sign in with</span>
+      </div>
+
+      <!-- <a href="#" class="form-google-button">Google</a> -->
+      <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "form-facebook-button" %>
+      <%#= link_to "Twitter", user_twitter_omniauth_authorize_path, class: "form-twitter-button" %>
+
+  </div>
+<% end %>

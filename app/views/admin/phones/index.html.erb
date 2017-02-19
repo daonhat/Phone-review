@@ -1,0 +1,49 @@
+<% provide :title, t(:all_phones) %>
+<h1 class="text-center"><%= t :all_phones %></h1>
+<%= link_to t("user.create"), new_admin_phone_path,
+  class: "btn btn-primary" %>
+<div class="panel-body">
+  <table class="table">
+    <thead>
+      <th><%= t "phone.id" %></th>
+      <th><%= t "phone.name" %></th>
+      <th><%= t "phone.star" %></th>
+      <th><%= t "user.created_at" %></th>
+      <th class="action"><%= t :action %></th>
+    </thead>
+    <tbody>
+      <% @phones.each_with_index do |phone, index| %>
+        <tr>
+          <td><%= index + 1 +
+          (params[:page].nil? ? 0 : (params[:page].to_i - 1)*8) %>
+        </td>
+          <td><%= link_to phone.name, admin_phone_path(phone) %></td>
+		  <td class="phone-star" data-rate-score="<%= phone.rate_score %>" title="<%= phone.rate_score %>"</td>
+          <td><%= phone.created_at.strftime t(:time_type) %></td>
+          <td class="dn-action-padding">
+            <%= link_to t(:edit), edit_admin_phone_path(phone),
+              class: "btn btn-primary" %>
+            <%= link_to t(:delete), [:admin, phone], method: :delete,
+              data: {confirm: t(:sure)},
+              class: "btn btn-danger btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script>
+$('.phone-star').raty({
+	hints: ['1', '2', '3','4', '5'],
+	score: function(){
+		return $(this).attr('data-rate-score');
+	},
+	readOnly: true,
+	starOn: '<%= asset_path("admin/star-on.png") %>',
+	starOff: '<%= asset_path("admin/star-off.png") %>',
+	starHalf: '<%= asset_path("admin/star-half.png") %>',
+
+});
+</script>
+<%= paginate @phones, theme: "twitter-bootstrap-3" %>
+

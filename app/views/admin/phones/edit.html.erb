@@ -1,0 +1,196 @@
+<% provide :title, t(:edit_phone) %>
+<%= form_for [:admin, @phone], html: {class: 'form-horizontal center-block create-phone-form', multipart: true} do |f| %>
+
+  <div class="field form-group">
+    <label class="col-lg-3 control-label">Phone category:</label>
+    <div class="phone-props col-lg-7">
+      <%= f.collection_select :category_id, @categories, :id, :name,
+        {}, {class: "edit-form form-control"} %>
+    </div>
+  </diV>
+
+  <div class="field form-group">
+    <label class="col-lg-3 control-label">Phone title:</label>
+    <div class="col-lg-8">
+      <% if @phone.errors[:name][0] %>
+        <%= f.text_field :name, autofocus: true, required: true, class: "error form-control dn-form-control"%>
+        <p class="error sign-error"><%= @phone.errors[:name][0].capitalize %></p>
+      <% else %>
+        <%= f.text_field :name, placeholder: "Phone Title", class: "form-control dn-form-control" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <label class="col-lg-3 control-label">Phone description:</label>
+    <div class="col-lg-8">
+      <%= f.cktext_area :description, id: "ckeditor" %>
+      <% if @phone.errors[:name][0] %>
+        <p class="error sign-error">Description <%= @phone.errors[:name][0] %></p>
+      <% end %>
+    </div>
+  </diV>
+
+  <div class="field form-group">
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">CPU:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :cpu, placeholder: "CPU", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">Operation system:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :os, placeholder: "Operation system", class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Ram</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :ram, placeholder: "Ram", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">Memory</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :memory, placeholder: "memory", class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Screen</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :screen, placeholder: "Screen", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-6 pull-right">
+      <label class="col-lg-5 control-label">Battery</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :pin, placeholder: "Battery", class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Back camera:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :back_camera, placeholder: "Back camera", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <label class="col-lg-5 control-label">Front camera:</label>
+      <div class="phone-props col-lg-7">
+        <%= f.text_field :front_camera, placeholder: "Back camera", class: "form-control" %>
+      </div>
+    </div>
+ </div>
+
+ <div id="image-upload-input-template" style="display: none;">
+	 <div class="images-upload col-lg-6" >
+		 <label class="col-lg-5 control-label">Images: </label>
+		 <div class="phone-props col-lg-7 clearfix image-input">
+			 <input class="" name="img[]" type="file" >
+		 </div>
+	 </div>
+	<div class="clearfix"></div>
+ </div>
+ <label>Images</label>
+ <hr/>
+ <div class="clearfix" style="margin-top: 40px"></div>
+ <div class="phone-images clearfix">
+ <% @phone.images.each do |image| %>
+	 <div class="phone-image col-lg-3">
+		 <div class="images-upload" >
+			 <div class="phone-props image-input">
+				 <img class="img-responsive" src="<%= "/"+image.image_url %>">
+			 </div>
+		 </div>
+		 <div class="delete-button">
+			 <span class="btn btn-danger" data-image-id="<%= image.id %>">Delete</span>
+		 </div>
+	 </div>
+
+<% end %>
+</div>
+<script>
+$(document).ready(function(){
+	$(".delete-button").click(function(e){
+		if(confirm('Are you sure to delete this image?')){
+			var div_parent = $(this).closest('.phone-image');
+			image_id = $(this).find('span').attr('data-image-id');
+			$.ajax({
+				url: '/admin/images/'+image_id,
+				type: 'DELETE',
+				data:{
+					'image_id' : image_id
+				},
+				dataType: 'json',
+				success: function(data){
+					if(data.status == 'success'){
+						div_parent.remove();
+					}else if(data.status == 'fail'){
+						alert('Can\'t delete this image');
+					}
+				}
+			})
+
+		}
+	});
+});
+</script>
+<div class="clearfix" style="margin-bottom: 40px"></div>
+<hr/>
+ <div class="field form-group ">
+    <div class="images-upload col-lg-6 ">
+      <label class="col-lg-5 control-label">Images: </label>
+      <div class="phone-props col-lg-7 clearfix image-input">
+        <input class="phone-images-file" name="img[]" type="file">
+      </div>
+    </div>
+	<div  class="clearfix"></div>
+
+	<div id="add-image-input" class="add-image-upload col-lg-6 ">
+		<div class="col-lg-7 pull-right">
+			<span class="btn btn-default">Add image</span>
+		</div>
+	</div>
+ </div>
+
+ <div id="create-phone-button" class="center-block">
+  <%= f.submit "Update", class: "btn btn-primary center-block" %>
+ </div>
+   <script>
+ $(document).ready(function(){
+        $("input.phone-images-file").fileinput({
+          showUpload: false
+        });
+        $("#file").on('filebatchuploadcomplete', function(event, files, extra) {
+            if(!confirm('Bạn có muốn upload tiếp không?')){
+                location.reload();
+            }
+        });
+        $(".add-image-upload span").click(function(){
+			var input_div = $("#image-upload-input-template");
+			$("#add-image-input").before(input_div.html());
+			$("#add-image-input").prev().prev().find("input").first().fileinput({
+				showUpload: false
+			})
+		});
+ });
+   </script>
+<% end %>
+
+
+
+
+
+
+
+

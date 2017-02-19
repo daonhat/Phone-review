@@ -1,0 +1,56 @@
+<header class="navbar navbar-fixed-top navbar-inverse dn-front-header">
+  <div class="container">
+    <a href="/" id="logo">
+      <img src="http://b7b43efe8c782b3a0edb-27c6e71db7a02a63f8d0f5823403023f.r27.cf2.rackcdn.com/logo.png" class="img-responsive">
+    </a>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+        data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false" style="border: none;">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse dropdown" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="login dn-nav-right" href="/categories/1">Andoird</a></li>
+        <li><a class="login dn-nav-right" href="/categories/2">IOS</a></li>
+        <li><a class="login dn-nav-right" href="/categories/3">Windows Phone</a></li>
+        <% if user_signed_in? %>
+          <li class="dropdown" style="margin-top: 8px;">
+            <a href="#" class="dropdown-toggle dn-header-dropdown" data-toggle="dropdown">
+              <span class="hidden-xs"><%= current_user.name.blank? ? current_user.email : current_user.name %><span class="caret"></span></span>
+            </a>
+            <ul class="dropdown-menu dn-head-user-drop" style="margin-top: 0px;">
+              <li><%= link_to "Profile",
+                user_path(current_user) %></li>
+              <li><%= link_to "Update profile",
+                edit_user_registration_path(current_user) %></li>
+              <% if can? :manage, :all %>
+                <li><%= link_to t(:admin_view),
+                  admin_root_path %></li>
+                <li class="divider"></li>
+              <% end %>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", new_user_session_path, class: "login dn-nav-right" %></li>
+          <li><%= link_to t(:signup), new_user_registration_path, class: "sign-up dn-nav-right" %></li>
+        <% end %>
+      </ul>
+
+      <%= search_form_for @search, url: searchs_path, html: {class: "navbar-form navbar-right dn-search-form"} do |f| %>
+        <div class="form-group">
+          <%= f.text_field :name_cont,
+            class: "form-control", placeholder: "Search" %>
+        </div>
+      <% end %>
+    </nav>
+  </div>
+</header>
+

@@ -12,5 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require jquery.raty
+//= require ratyrate
+//= require lightslider
 //= require turbolinks
+//= require swiper.min
+//= require ckeditor/init
 //= require_tree .
+
+$(document).on('ready', function() {
+  set_timetout();
+});
+
+function set_timetout() {
+  $('.alert').delay(3000).slideUp();
+}

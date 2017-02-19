@@ -1,0 +1,25 @@
+<div class="row">
+ <div class="col-md-3 col-md-offset-3 col-xs-6">
+   <div class="small-box bg-yellow">
+     <div class="inner">
+       <h3><%= @users.count %></h3>
+       <p><%= t "admin.user_register" %></p>
+     </div>
+     <div class="icon">
+       <i class="fa fa-user-plus"></i>
+     </div>
+     <%= link_to t(:more_info), "#", class: "small-box-footer" %>
+   </div>
+ </div>
+</div>
+
+<%= form_tag admin_root_path, method: :get, id: "form-admin-date" do %>
+  <div>
+    <%= date_field_tag :date, params[:date],
+      class: "form-control dn-admin-date-field" %>
+  </div>
+<% end %>
+
+<div id="dn-chart-users" data-chart="<%= @user_sign_up_chart_data %>"></div>
+<hr>
+<div id="dn-chart-phone" data-chart="<%= @phone_of_cate_data %>"></div>
