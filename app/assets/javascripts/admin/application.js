@@ -37,6 +37,9 @@ var category_new = function(){
 };
 
 $(document).on("turbolinks:load", function() {
-  category_new();
   CKEDITOR.replace('ckeditor');
+});
+
+$( document ).on('turbolinks:load', function() {
+  category_new();
 });
