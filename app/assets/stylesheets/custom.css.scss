@@ -330,7 +330,7 @@ body{
     left: 0;
     right: 0;
     z-index: 1;
-    background: url('bgd-grd-2.png') 0 0 repeat-x;
+    background: url(avatar/bgd-grd-2.png) 0 0 repeat-x;
   }
   .dn-title{
     position: absolute;
@@ -354,7 +354,7 @@ body{
       .comment{
         background-position: 0 2px;
         padding-left: 18px;
-        background-image: url('pi-icon.png');
+        background-image: url(avatar/pi-icon.png);
         background-repeat: no-repeat;
       }
     }
@@ -371,7 +371,7 @@ body{
 }
 
 .dn-review-item a:hover .dn-figcaption{
-  background: url('opt-black80.png') 0 0 repeat;
+  background: url(avatar/opt-black80.png) 0 0 repeat;
   -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
   -moz-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
   -ms-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
